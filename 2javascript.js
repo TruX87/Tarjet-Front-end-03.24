@@ -44,7 +44,7 @@ if (registreerunud) {
 
 isikukood = "00000000001"
 If (isikukood.length >= 11); {
-    console.log("Email on korrektne")
+    console.log("Isikukood on korrektne")
 } else {
-    console.log("Email pole korrektne")
+    console.log("Eisikukood ei ole korrektne")
 }
