@@ -15,6 +15,7 @@ If (nimi.length > 1); {
 }
     
 vanus = 25
+vanus = true
 If (vanus >= 18); {
     console.log("Isik on täisealine")
 } else {
