@@ -10,7 +10,6 @@ function App() {
         <img className="Header-logo" src="https://maitar.ee/wp-content/uploads/2024/02/maitar-logo-animation.gif" alt="Logo" />
       </Link>
       
-      {/*  */}
       <Link to="osta-kinkekaart">
         <button className="nupp1">Kinkekaart</button>
       </Link>
