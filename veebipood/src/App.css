@@ -1,0 +1,44 @@
+.App {
+  text-align: center;
+}
+.Header-logo {
+  height: 70px;
+  padding: 1rem;
+ /* width: 70px;*/
+  border-radius: 10px;
+}
+
+.Header-logo:hover {
+  opacity: 70%;
+  cursor: pointer;
+}
+
+.Header-logo:active {
+  transform: scale(0.95)
+}
+
+.nupp1 {
+  background-color: greenyellow;
+  margin: 5px;
+  padding: 5px;
+  color: black;
+  font-weight: 700;
+  border-radius: 15px;
+  border-color: greenyellow;
+}
+
+.nupp1:hover {
+  cursor: pointer;
+  background-color: green;
+  color: white;
+  border-color: green;
+}
+
+.nupp1:active {
+  text-decoration: underline;
+}
+
+div {
+  font-weight: 700;
+  font-size: 20px;
+}

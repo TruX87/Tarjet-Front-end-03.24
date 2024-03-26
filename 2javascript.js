@@ -60,11 +60,9 @@ const str2 = 'sellele aadressile';
 
 console.log(str1.concat(' ', str2));
     console.log(email)
-
+    console.log(str1.concat(' ', email));
 const str3 = 'E-maili ei';
 const str4 = 'saadetud';    
-
-console.log(str3.concat(' ', str4));
 
 isikukood = "00000000001"
 console.log(isikukood)
