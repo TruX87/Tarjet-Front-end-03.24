@@ -5,19 +5,19 @@ function App() {
   return (
     <div >
       <Link to="">
-        <button className="nupp">Avalehele</button>
+        <button>Avalehele</button>
       </Link>
       
       <Link to="uudised">
-        <button className="nupp">Uudiste lehele</button>
+        <button>Uudiste lehele</button>
       </Link>
 
       <Link to="kontakt">
-        <button className="nupp">Võta meiega ühendust</button>
+        <button>Võta meiega ühendust</button>
       </Link>
 
       <Link to="meist">
-        <button className="nupp">Info meist</button>
+        <button>Info meist</button>
       </Link>
 
       <Routes>
