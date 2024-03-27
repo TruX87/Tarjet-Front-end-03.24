@@ -1,0 +1,67 @@
+.nupp {
+  color: rgb(161, 157, 157);
+  background-color: rgb(58, 201, 58);
+}
+
+.nupp:hover {
+  height: 100px;
+}
+
+.nupp:active {
+  cursor: grab;
+}
+
+.text1 {
+  color: blue;
+  font-style: italic;
+}
+
+.text1:hover {
+  font-size: 24px;
+}
+
+.text2 {
+  color: green;
+  font-weight: bold;
+  text-shadow: -1px 1px 0 red,
+                1px 1px 0 red,
+                1px -1px 0 red,
+                -1px -1px 0 red;
+}
+
+.text2:hover {
+  text-shadow: -1px 1px 0 brown,
+                1px 1px 0 brown,
+                1px -1px 0 brown,
+                -1px -1px 0 brown;
+}
+
+.pilt {
+  height: 100px;
+  float: right;
+}
+
+.pilt:hover {
+  cursor: pointer;
+  border-radius: 30px;
+}
+
+.pilt:active {
+  opacity: 70%;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
