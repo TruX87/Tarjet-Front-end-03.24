@@ -1,6 +1,7 @@
 .App {
   text-align: center;
 }
+
 .Header-logo {
   height: 70px;
   padding: 1rem;
@@ -23,7 +24,7 @@
   padding: 5px;
   color: black;
   font-weight: 700;
-  border-radius: 15px;
+  border-radius: 6px;
   border-color: greenyellow;
 }
 
@@ -39,6 +40,6 @@
 }
 
 div {
-  font-weight: 700;
+  font-weight: 400;
   font-size: 20px;
 }

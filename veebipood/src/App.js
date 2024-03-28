@@ -1,6 +1,12 @@
 //import logo from './logo.svg';
 import './App.css';
 import { Link, Route, Routes } from "react-router-dom"
+import Avaleht from './pages/Avaleht';
+import Kinkekaart from './pages/Kinkekaart';
+import Esindused from './pages/Esindused';
+import Arikliendile from './pages/Arikliendile';
+import Ostukorv from './pages/Ostukorv';
+import Seaded from './pages/Seaded';
 
 function App() {
   return (
@@ -26,13 +32,19 @@ function App() {
         <button className="nupp1">Ostukorv</button>
       </Link>
 
+      <Link to="seaded">
+        <button className="nupp1">Seaded</button>
+      </Link>
+
 {/* kui ollakse localhost:3000/osta-kinkekaart lehel, siis näidatakse sisu (HTML) */}
       <Routes>
-        <Route path="avaleht" element={ <div>Avaleht</div> }></Route>
-        <Route path="osta-kinkekaart" element={ <div>Kinkekaardid</div> }></Route>
-        <Route path="esindused" element={ <div>Esindused</div> }></Route>
-        <Route path="arikliendile" element={ <div>Ärikliendile</div> }></Route>
-        <Route path="ostukorv" element={ <div>Ostukorvi sisu</div> }></Route>
+        <Route path="avaleht" element={ <Avaleht /> }></Route>
+        <Route path="osta-kinkekaart" element={ <Kinkekaart /> }></Route>
+        <Route path="esindused" element={ <Esindused /> }></Route>
+        <Route path="arikliendile" element={ <Arikliendile /> }></Route>
+        <Route path="ostukorv" element={ <Ostukorv /> }></Route>
+        <Route path="seaded" element={ <Seaded /> }></Route>
+
       </Routes>
 
       {/* <p>Tere tulemast!</p>  */}
