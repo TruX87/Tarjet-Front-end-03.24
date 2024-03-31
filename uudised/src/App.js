@@ -1,5 +1,9 @@
 import './App.css';
 import { Link, Route, Routes } from "react-router-dom"
+import Avaleht from './pages/Avaleht';
+import Uudised from './pages/Uudised';
+import Kontakt from './pages/Kontakt';
+import Meist from './pages/Meist';
 
 function App() {
   return (
@@ -21,10 +25,10 @@ function App() {
       </Link>
 
       <Routes>
-        <Route path="" element={ <div>Avaleht, siin olev info on nähtav localhost:3000 aadressil</div> }></Route>
-        <Route path="uudised" element={ <div>Uudised, siin olev info on nähtav localhost:3000/uudised aadressil</div> }></Route>
-        <Route path="kontakt" element={ <div>Kontakt, siin olev info on nähtav localhost:3000/kontakt aadressil</div> }></Route>
-        <Route path="meist" element={ <div>Meist, siin olev info on nähtav localhost:3000/meist aadressil</div> }></Route>
+        <Route path="" element={ <Avaleht /> }></Route>
+        <Route path="uudised" element={ <Uudised /> }></Route>
+        <Route path="kontakt" element={ <Kontakt /> }></Route>
+        <Route path="meist" element={ <Meist /> }></Route>
       </Routes>
     </div>
   );
