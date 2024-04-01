@@ -43,3 +43,32 @@ div {
   font-weight: 400;
   font-size: 20px;
 }
+
+.keel {
+  font-weight: bold;
+}
+
+.keel:hover {
+  color: blue;
+}
+
+.keel-aktiivne {
+  color: green;
+  font-weight: bold;
+}
+
+.teade {
+  font-style: italic;
+}
+.summa-aktiivne {
+  color: rgb(235, 78, 173);
+  border: 2px solid rgb(227, 6, 140);
+
+  font-size: 30px;
+  border-radius: 5px;
+}
+
+.summa {
+  font-size: 30px;
+  border-radius: 5px;
+}
