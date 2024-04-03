@@ -17,3 +17,7 @@
 .Header-logo:active {
   transform: scale(0.95)
 }
+
+.valitud {
+  font-weight: bold;
+}
