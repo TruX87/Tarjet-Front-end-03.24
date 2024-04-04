@@ -1,9 +1,35 @@
 import './App.css';
 import { Link, Route, Routes } from "react-router-dom"
+import Avaleht from './pages/Avaleht';
+import Kontakt from './pages/Kontakt';
+import Meist from './pages/Meist';
+import Seaded from './pages/Seaded';
 
 function App() {
   return (
     <div className="App">
+      <Link to="avaleht">
+        <button>Avaleht</button>
+      </Link>
+
+      <Link to="meist">
+        <button>Meist</button>
+      </Link>
+
+      <Link to="kontakt">
+        <button>Kontakt</button>
+      </Link>
+
+      <Link to="seaded">
+        <button>Seaded</button>
+      </Link>
+      <Routes>
+        <Route path="avaleht" element={ <Avaleht /> }></Route>
+        <Route path="kontakt" element={ <Kontakt /> }></Route>
+        <Route path="meist" element={ <Meist /> }></Route>
+        <Route path="seaded" element={ <Seaded /> }></Route>
+      </Routes>
+<br />
       <button className="nupp">Roheline nupp</button>
       <div className="text1">Sinine tekst</div>
       <div className="text2">Roheline tekst</div>

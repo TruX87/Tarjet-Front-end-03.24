@@ -26,11 +26,11 @@ function Avaleht() {
       {laigitud === true && <img src="/laigitud.svg" alt="" />}
       {laigitud === false && <img src="/mitte-laigitud.svg" alt="" />}
       <button onClick={() => muudaLaigitud(!laigitud)}>Muuda like-i</button>
-        <div>{sonum}</div>
-        {kogus !== 0 && <button onClick={nulli}>Tagasi nulli</button>}
-        <button disabled={kogus === 0} onClick={vähenda}>-</button>
-        <span>{kogus}</span>
-        <button onClick={suurenda}>+</button>
+      <div>{sonum}</div>
+      {kogus !== 0 && <button onClick={nulli}>Tagasi nulli</button>}
+      <button disabled={kogus === 0} onClick={vähenda}>-</button>
+      <span className={kogus >= 10 ? "kuldne" : null}>{kogus}</span>
+      <button onClick={suurenda}>+</button>
     </div>
   )
 }
