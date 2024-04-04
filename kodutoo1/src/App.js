@@ -29,8 +29,8 @@ function App() {
         <Route path="meist" element={ <Meist /> }></Route>
         <Route path="seaded" element={ <Seaded /> }></Route>
       </Routes>
-<br />
-      <button className="nupp">Roheline nupp</button>
+<br /><br /><br /><br />
+      {/* <button className="nupp">Roheline nupp</button>
       <div className="text1">Sinine tekst</div>
       <div className="text2">Roheline tekst</div>
       <img className="pilt" src="https://www.saarevolley.ee/wp-content/uploads/2018/02/Netist-pilt-pallid-199x120x3.jpg" alt="pallid" />
@@ -73,7 +73,7 @@ function App() {
 </table>
     <iframe title="video" width="420" height="315"
     src="https://www.youtube.com/embed/tgbNymZ7vqY">
-    </iframe>
+    </iframe> */}
     </div>
   );
 }
