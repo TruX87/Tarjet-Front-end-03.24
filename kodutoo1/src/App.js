@@ -6,6 +6,7 @@ import Meist from './pages/Meist';
 import Seaded from './pages/Seaded';
 import { useRef, useState } from 'react';
 import Leht from './pages/Leht';
+import Loader from './pages/Loader';
 
 function App() {
   const [sisselogitud, muudaSisselogitud] = useState("ei");
@@ -64,6 +65,7 @@ function App() {
         <Route path="meist" element={ <Meist /> }></Route>
         <Route path="seaded" element={ <Seaded /> }></Route>
         <Route path="leht" element={ <Leht /> }></Route>
+        <Route path="loader" element={ <Loader /> }></Route>
       </Routes>
 <br /><br /><br /><br />
       {/* <button className="nupp">Roheline nupp</button>
