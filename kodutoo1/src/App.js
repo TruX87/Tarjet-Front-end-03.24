@@ -5,6 +5,7 @@ import Kontakt from './pages/Kontakt';
 import Meist from './pages/Meist';
 import Seaded from './pages/Seaded';
 import { useRef, useState } from 'react';
+import Leht from './pages/Leht';
 
 function App() {
   const [sisselogitud, muudaSisselogitud] = useState("ei");
@@ -54,11 +55,15 @@ function App() {
       <Link to="seaded">
         <button>Seaded</button>
       </Link>
+      <Link to="leht">
+        <button>Leht</button>
+      </Link>
       <Routes>
         <Route path="avaleht" element={ <Avaleht /> }></Route>
         <Route path="kontakt" element={ <Kontakt /> }></Route>
         <Route path="meist" element={ <Meist /> }></Route>
         <Route path="seaded" element={ <Seaded /> }></Route>
+        <Route path="leht" element={ <Leht /> }></Route>
       </Routes>
 <br /><br /><br /><br />
       {/* <button className="nupp">Roheline nupp</button>
