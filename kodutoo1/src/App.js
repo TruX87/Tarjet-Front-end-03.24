@@ -4,11 +4,42 @@ import Avaleht from './pages/Avaleht';
 import Kontakt from './pages/Kontakt';
 import Meist from './pages/Meist';
 import Seaded from './pages/Seaded';
+import { useRef, useState } from 'react';
 
 function App() {
+  const [sisselogitud, muudaSisselogitud] = useState("ei");
+  const [sonum, muudaSonum] = useState("");
+  const KasutajaNimiRef = useRef();
+  const ParoolRef = useRef();
+
+  const logiSisse = () => {
+    if (ParoolRef.current.value === "123") {
+      muudaSisselogitud("jah");
+      muudaSonum(KasutajaNimiRef.current.value + ", Oled sisselogitud");
+    } else {
+      muudaSonum("Vale parool");
+    }
+  }
+
+  const logiValja = () => {
+    muudaSisselogitud("ei");
+    muudaSonum("Oled edukalt väljalogitud")
+  }
+
   return (
     <div className="App">
-      <Link to="avaleht">
+      <div>{sonum}</div>
+      { sisselogitud === "ei" && <div>
+        <label>Kasutajanimi</label><br />
+        <input ref={KasutajaNimiRef} type="text" /><br />
+        <label>Parool</label><br />
+        <input ref={ParoolRef} type="password" /><br />
+    </div>} 
+
+      { sisselogitud === "ei" && <button onClick={logiSisse}>Logi sisse</button>}
+      { sisselogitud === "jah" && <button onClick={logiValja}>Logi välja</button>}
+
+      <Link to="/">
         <button>Avaleht</button>
       </Link>
 
