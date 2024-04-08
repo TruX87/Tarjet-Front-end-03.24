@@ -1,5 +1,5 @@
 .App {
-  background-color: #beb4b4;
+  text-align: center;
 }
 
 .rectangle {
@@ -12,7 +12,6 @@
 .main-picture {
   height: 200px;
   width: 50%;
-  margin-left: 25%;
   border-radius: 10px;
 }
 
