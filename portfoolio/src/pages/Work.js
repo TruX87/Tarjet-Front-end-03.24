@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 function Work() {
   return (
-    <div>
+    <div className='work'>
         <Link to="/"><button>Tagasi</button></Link>
         <div>Tööde sisu</div>
     </div>
