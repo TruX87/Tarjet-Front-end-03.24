@@ -6,7 +6,8 @@ import LisaArvuti from './pages/LisaArvuti';
 
 function App() {
   return (
-    <div>
+    <div className="App">
+      <br />
       <Link to="/">
         <button>Avalehele</button>
       </Link>
@@ -16,6 +17,7 @@ function App() {
       <Link to="/add">
         <button>Lisa sülearvuti</button>
       </Link>
+      <br /><br />
       <Routes>
         <Route path="" exact element={<Avaleht />} />
         <Route path="all" exact element={<VaataArvuteid />} />

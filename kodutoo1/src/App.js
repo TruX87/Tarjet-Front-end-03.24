@@ -37,10 +37,10 @@ function App() {
         <label>Parool</label><br />
         <input ref={ParoolRef} type="password" /><br />
     </div>} 
-
+<br />
       { sisselogitud === "ei" && <button onClick={logiSisse}>Logi sisse</button>}
       { sisselogitud === "jah" && <button onClick={logiValja}>Logi välja</button>}
-
+<br /><br /><br />
       <Link to="/">
         <button>Avaleht</button>
       </Link>
@@ -59,6 +59,10 @@ function App() {
       <Link to="leht">
         <button>Leht</button>
       </Link>
+      <Link to="loader">
+        <button>Loader</button>
+      </Link>
+      <br /><br />
       <Routes>
         <Route path="avaleht" element={ <Avaleht /> }></Route>
         <Route path="kontakt" element={ <Kontakt /> }></Route>
@@ -68,7 +72,7 @@ function App() {
         <Route path="loader" element={ <Loader /> }></Route>
       </Routes>
 <br /><br /><br /><br />
-      {/* <button className="nupp">Roheline nupp</button>
+      <button className="nupp">Roheline nupp</button>
       <div className="text1">Sinine tekst</div>
       <div className="text2">Roheline tekst</div>
       <img className="pilt" src="https://www.saarevolley.ee/wp-content/uploads/2018/02/Netist-pilt-pallid-199x120x3.jpg" alt="pallid" />
@@ -111,7 +115,7 @@ function App() {
 </table>
     <iframe title="video" width="420" height="315"
     src="https://www.youtube.com/embed/tgbNymZ7vqY">
-    </iframe> */}
+    </iframe>
     </div>
   );
 }

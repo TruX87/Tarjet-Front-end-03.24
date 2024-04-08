@@ -73,7 +73,7 @@ tr:nth-child(even) {
 
 .lds-ring {
   /* change color here */
-  color: #000000;
+  color: #3739ad;
 }
 .lds-ring,
 .lds-ring div {
@@ -82,15 +82,15 @@ tr:nth-child(even) {
 .lds-ring {
   display: inline-block;
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 50px;
 }
 .lds-ring div {
   box-sizing: border-box;
   display: block;
   position: absolute;
-  width: 64px;
-  height: 64px;
+  width: 54px;
+  height: 54px;
   margin: 8px;
   border: 8px solid currentColor;
   border-radius: 50%;
