@@ -5,8 +5,7 @@
 .Header-logo {
   height: 70px;
   padding: 1rem;
- /* width: 70px;*/
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 
 .Header-logo:hover {
@@ -25,14 +24,16 @@
   color: black;
   font-weight: 700;
   border-radius: 6px;
-  border-color: greenyellow;
+  /* border-color: greenyellow; */
+  border: none;
 }
 
 .nupp1:hover {
   cursor: pointer;
   background-color: green;
   color: white;
-  border-color: green;
+  /* border-color: green; */
+  border: none;
 }
 
 .nupp1:active {

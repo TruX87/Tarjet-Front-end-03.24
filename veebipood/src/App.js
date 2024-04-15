@@ -19,15 +19,15 @@ function App() {
 
 {/* kui ollakse localhost:3000/osta-kinkekaart lehel, siis näidatakse sisu (HTML) */}
       <Routes>
-        <Route path="" element={ <Navigate to="avaleht"/> }></Route>
-        <Route path="avaleht" element={ <Avaleht /> }></Route>
-        <Route path="osta-kinkekaart" element={ <Kinkekaart /> }></Route>
-        <Route path="esindused" element={ <Esindused /> }></Route>
-        <Route path="arikliendile" element={ <Arikliendile /> }></Route>
-        <Route path="ostukorv" element={ <Ostukorv /> }></Route>
-        <Route path="seaded" element={ <Seaded /> }></Route>
-        <Route path="lisa-toode" element={ <LisaToode /> }></Route>
-        <Route path="*" element={ <NotFound /> }></Route>
+        <Route path="/" element={ <Navigate to="/avaleht"/> } />   {/* //lõpu teine variant */}
+        <Route path="avaleht" element={ <Avaleht /> } />
+        <Route path="osta-kinkekaart" element={ <Kinkekaart /> } />
+        <Route path="esindused" element={ <Esindused /> } />
+        <Route path="arikliendile" element={ <Arikliendile /> } />
+        <Route path="ostukorv" element={ <Ostukorv /> } />
+        <Route path="seaded" element={ <Seaded /> } />
+        <Route path="lisa-toode" element={ <LisaToode /> } />
+        <Route path="*" element={ <NotFound /> } />
       </Routes>
 
       {/* <p>Tere tulemast!</p>  */}

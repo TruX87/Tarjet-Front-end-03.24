@@ -1,17 +1,23 @@
 import React, { useState } from 'react'
 
 function Esindused() {
-    const [linn, muudaLinn] = useState("tallinn");
+    const [linn, muudaLinn] = useState("Tallinn");  // React teeb nii, tema vahetab olekuid
+    // let linn = "Tallinn";   tavaline JavaScript teeb nii
 
   return (
     <div>
         <div>Hetkel aktiivne linn: {linn}</div>
-        <button onClick={() => muudaLinn("tallinn")}>Tallinn</button>
-        <button onClick={() => muudaLinn("tartu")}>Tartu</button>
-        <button onClick={() => muudaLinn("pärnu")}>Pärnu</button>
-        <button onClick={() => muudaLinn("narva")}>Narva</button>
+        <button onClick={() => muudaLinn("Tallinn")}>Tallinn</button>
+        <button onClick={() => muudaLinn("Tartu")}>Tartu</button>
+        <button onClick={() => muudaLinn("Pärnu")}>Pärnu</button>
+        <button onClick={() => muudaLinn("Narva")}>Narva</button>
 
-       {linn === "tallinn" &&  <div>
+        {/* <button onClick={() => {linn = "Tallinn"}}>Tallinn</button>
+        <button onClick={() => {linn = "Tartu"}}>Tartu</button>
+        <button onClick={() => {linn = "Pärnu"}}>Pärnu</button>
+        <button onClick={() => {linn = "Narva"}}>Narva</button> */}
+
+       {linn === "Tallinn" &&  <div>
         <div>Ülemiste</div>
             <div>Rocca al Mare</div>
             <div>Magistrali</div>
@@ -20,14 +26,14 @@ function Esindused() {
             <div>Järveotsa</div>
         </div>}
 
-        {linn === "tartu" && <div>
+        {linn === "Tartu" && <div>
             <div>Raatuse</div>
             <div>Lõunakeskus</div>
         </div>}
 
-        {linn === "pärnu" && <div>Port Artur 2</div>}
+        {linn === "Pärnu" && <div>Port Artur 2</div>}
 
-        {linn === "narva" && <div>Fama</div>}
+        {linn === "Narva" && <div>Fama</div>}
     </div>
   )
 }
