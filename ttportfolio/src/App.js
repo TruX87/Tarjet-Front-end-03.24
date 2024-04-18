@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import RoundOne from "./components/roundDesigns/RoundOne";
+import RoundTwo from "./components/roundDesigns/RoundTwo";
+import RoundFive from "./components/roundDesigns/RoundFive";
+import RoundThree from "./components/roundDesigns/RoundThree";
+import RoundFour from "./components/roundDesigns/RoundFour";
+import Home from "./Home";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="w-full h-screen font-bodyfont text-textColor bg-black relative overflow-hidden">
+      <div className="max-w-screen-2xl h-full mx-auto flex justify-center items-center">
+        <Home />
+      </div>
+      <div className="w-full h-full absolute top-0 left-0 z-10">
+        <RoundOne />
+        <RoundTwo />
+        <RoundThree />
+        <RoundFour />
+        <RoundFive />
+      </div>
     </div>
   );
 }
