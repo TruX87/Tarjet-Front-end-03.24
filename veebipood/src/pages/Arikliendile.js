@@ -42,3 +42,6 @@ Juhul kui garantiiremonti toodud seadmel ei leita valmistamisprotsessist või ka
 }
 
 export default Arikliendile
+
+// Võiks välja failist 100% tõsta, kui üle 200 rea
+// Võiks mõelda välja tõstmise peale, kui on üle 150 rea

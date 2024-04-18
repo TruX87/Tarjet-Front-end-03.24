@@ -19,11 +19,11 @@
 
 .nupp1 {
   background-color: greenyellow;
-  margin: 5px;
-  padding: 5px;
+  margin: 3px;
+  padding: 7px;
   color: black;
   font-weight: 700;
-  border-radius: 6px;
+  border-radius: 4px;
   /* border-color: greenyellow; */
   border: none;
 }
@@ -76,4 +76,24 @@ div {
 
 .kuldne {
   color: goldenrod;
+}
+
+.linn {
+  font-size: 20px;
+}
+.linn:hover {
+  text-decoration: underline;
+  color: blueviolet;
+  cursor: pointer;
+}
+
+.linn-aktiivne {
+  font-size: 20px;
+  text-decoration: underline;
+  text-decoration-color: blueviolet;
+}
+
+.linn-aktiivne:hover {
+  color: blueviolet;
+  cursor: pointer;
 }

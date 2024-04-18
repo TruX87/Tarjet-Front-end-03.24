@@ -2,11 +2,11 @@ import React, { useRef, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 
 function LisaToode() {
-    const [sonum, muudaSonum] = useState("");
+    const [sonum, muudaSonum] = useState("Lisa uus toode!");
     const luger = useRef();
 
     // function lisa() {
-                                // functsion & const lahendus on samaväärne
+                                // function & const lahendus on samaväärne
 // }
 
 const lisa = () => {
@@ -14,6 +14,7 @@ const lisa = () => {
         muudaSonum("Tühja nimetusega ei saa toodet lisada!");
     } else {
         muudaSonum("Toode lisatud: " + luger.current.value);
+        luger.current.value = "";
         toast("Toode lisatud!",
         {
           icon: '👏',
@@ -30,7 +31,7 @@ const lisa = () => {
   return (
     <div>
         <div>{sonum}</div>
-        <label>Toote nimi</label>
+        <label>Toote nimi </label>
         <input ref={luger} type="text" />
         <button onClick={lisa}>Sisesta</button>
 
