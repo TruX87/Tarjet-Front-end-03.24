@@ -16,7 +16,7 @@ function Seaded() {
       if (adreRef.current.value === "") {
         toast.error("Aadress on jäänud sisestamata",
         {
-          icon: '',
+          icon: '❌',
           style: {
             borderRadius: '10px',
             background: '#333',
@@ -29,7 +29,7 @@ function Seaded() {
       if (adreRef.current.value.length < 5) {
         toast.error("Aadress on liiga lühike",
         {
-          icon: '',
+          icon: '❌',
           style: {
             borderRadius: '10px',
             background: '#333',
@@ -42,7 +42,7 @@ function Seaded() {
       if (adreRef.current.value.toLowerCase()[0] === adreRef.current.value[0]) {
         toast.error("Aadress on väikese tähega",
         {
-          icon: '',
+          icon: '❌',
           style: {
             borderRadius: '10px',
             background: '#333',
@@ -62,7 +62,7 @@ function Seaded() {
       if (emailRef.current.value === "") {
         toast.error("Email on jäänud sisestamata",
         {
-          icon: '',
+          icon: '❌',
           style: {
             borderRadius: '10px',
             background: '#333',
@@ -75,7 +75,7 @@ function Seaded() {
       if (emailRef.current.value.length < 5) {
         toast.error("Email on liiga lühike",
         {
-          icon: '',
+          icon: '❌',
           style: {
             borderRadius: '10px',
             background: '#333',
@@ -88,7 +88,7 @@ function Seaded() {
       if (emailRef.current.value.includes("@") === false) {
         toast.error("Email ei ole korrektne!",
         {
-          icon: '',
+          icon: '❌',
           style: {
             borderRadius: '10px',
             background: '#333',
@@ -108,7 +108,7 @@ function Seaded() {
       if (telefonRef.current.value === "") {
         toast.error("Telefon on jäänud sisestamata",
         {
-          icon: '',
+          icon: '❌',
           style: {
             borderRadius: '10px',
             background: '#333',
@@ -121,7 +121,7 @@ function Seaded() {
       if (telefonRef.current.value.length < 11) {
         toast.error("Telefoni number on liiga lühike",
         {
-          icon: '',
+          icon: '❌',
           style: {
             borderRadius: '10px',
             background: '#333',
@@ -134,7 +134,7 @@ function Seaded() {
       if (telefonRef.current.value.startsWith("+372" === false)) {
         toast.error("Telefonil ei ole EEsti suunakoodi",
         {
-          icon: '',
+          icon: '❌',
           style: {
             borderRadius: '10px',
             background: '#333',
@@ -147,7 +147,7 @@ function Seaded() {
       if (isNaN(Number(telefonRef.current.value))) {
         toast.error("Tähti ei saa telefoninumbrisse sisestada!",
         {
-          icon: '',
+          icon: '❌',
           style: {
             borderRadius: '10px',
             background: '#333',
