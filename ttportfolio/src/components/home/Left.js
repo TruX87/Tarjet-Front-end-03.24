@@ -5,15 +5,15 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { SiYoutubemusic } from "react-icons/si";
 import { FiInstagram, FiMail, FiSend } from "react-icons/fi";
-import CV from "../../assets/Noor_Mohammad_resume.pdf";
+import CV from "../../assets/Pakutavad_Teenused.pdf";
 import { bannerImg } from "../../assets/index";
 
 const Left = () => {
   const [text] = useTypewriter({
-    words: ["Web Developer", "Full Stack Developer", "UI Designer"],
+    words: ["Veebi arendaja", "Front-end arendaja", "Kodulehe haldur"],
     loop: true,
-    typeSpeed: 30,
-    deleteSpeed: 20,
+    typeSpeed: 40,
+    deleteSpeed: 30,
     delaySpeed: 2000,
   });
   return (
@@ -28,7 +28,7 @@ const Left = () => {
       </div>
       <div className="w-full h-2/5 flex flex-col justify-between border-t-0 rounded-bl-xl rounded-br-xl">
         <div className="flex flex-col items-center gap-2 py-10">
-          <h1 className="text-textColor text-4xl font-semibold">John Doe</h1>
+          <h1 className="text-textColor text-4xl font-semibold">Tarjet Truks</h1>
           <p className="text-base text-designColor tracking-wide">
             {text}
             <Cursor cursorBlinking="false" cursorStyle="|" />
@@ -65,11 +65,11 @@ const Left = () => {
             rel="noreferrer"
           >
             <button className="w-full h-full flex justify-center items-center gap-2">
-              Download CV <BsCloudLightningFill />
+              Lae alla CV <BsCloudLightningFill />
             </button>
           </a>
           <button className="w-1/2 border-t-[1px] border-t-zinc-800 text-sm tracking-wide uppercase flex justify-center items-center gap-2 hover:text-designColor duration-300">
-            Contact me <FiSend />
+            Võta ühendust <FiSend />
           </button>
         </div>
       </div>

@@ -7,11 +7,11 @@ import MyServices from "./MyServices";
 const About = () => {
   return (
     <section id="about" className="w-full">
-      <Title title="About" subTitle="Me" />
+      <Title title="Minust" subTitle="Endast" />
       <AboutMe />
-      <Title title="My" subTitle="Services" />
+      <Title title="Minu" subTitle="Teenused" />
       <MyServices />
-      <Title title="Fun" subTitle="Fact" />
+      <Title title="Lõbus" subTitle="Fakt" />
       <FunFact />
     </section>
   );

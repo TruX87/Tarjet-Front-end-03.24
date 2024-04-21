@@ -11,7 +11,7 @@ import Resume from "./components/resume/Resume";
 import Projects from "./components/projects/Projects";
 import Blog from "./components/blog/Blog";
 import Contact from "./components/contact/Contact";
-import Sidenav from "./components/home/sidenav/Sidenav";
+import Sidenav from "./components/home/sidenav/SideNav";
 
 const Home = () => {
   const [about, setAbout] = useState(true);
@@ -89,7 +89,7 @@ const Home = () => {
           >
             <FaUser />
             <span className="text-black font-medium text-xs uppercase bg-designColor px-4 py-[1px] rounded-xl absolute left-0 translate-x-8 group-hover:translate-x-12 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20">
-              About
+              Endast
             </span>
           </span>
           {/* Resume Icon */}
@@ -109,7 +109,7 @@ const Home = () => {
           >
             <IoIosPaper />
             <span className="text-black font-medium text-xs uppercase bg-designColor px-4 py-[1px] rounded-xl absolute left-0 translate-x-8 group-hover:translate-x-12 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20">
-              Resume
+              Resumee
             </span>
           </span>
           {/* Project Icon */}
@@ -129,7 +129,7 @@ const Home = () => {
           >
             <MdWork />
             <span className="text-black font-medium text-xs uppercase bg-designColor px-4 py-[1px] rounded-xl absolute left-0 translate-x-8 group-hover:translate-x-12 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20">
-              Projects
+              Projektid
             </span>
           </span>
           {/* Blog Icon */}
@@ -149,7 +149,7 @@ const Home = () => {
           >
             <SiGooglechat />
             <span className="text-black font-medium text-xs uppercase bg-designColor px-4 py-[1px] rounded-xl absolute left-0 translate-x-8 group-hover:translate-x-12 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20">
-              Blog
+              Blogi
             </span>
           </span>
           {/* Contact Icon */}
@@ -169,13 +169,13 @@ const Home = () => {
           >
             <FaEnvelope />
             <span className="text-black font-medium text-xs uppercase bg-designColor px-4 py-[1px] rounded-xl absolute left-0 translate-x-8 group-hover:translate-x-12 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20">
-              Contact
+              Kontakt
             </span>
           </span>
           <span className="w-full h-6 text-textColor text-xl flex items-center justify-center hover:text-designColor duration-300 cursor-pointer relative group">
             <BsTelephonePlusFill />
             <span className="text-black font-medium text-xs uppercase bg-designColor px-4 py-[1px] rounded-xl absolute left-0 translate-x-8 group-hover:translate-x-12 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20">
-              Call
+              Helista
             </span>
           </span>
         </div>
