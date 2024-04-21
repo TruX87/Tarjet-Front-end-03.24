@@ -7,6 +7,7 @@ import Seaded from './pages/Seaded';
 import { useRef, useState } from 'react';
 import Leht from './pages/Leht';
 import Loader from './pages/Loader';
+import {  ToastContainer, toast  } from 'react-toastify';
 
 function App() {
   const [sisselogitud, muudaSisselogitud] = useState("ei");
@@ -15,17 +16,38 @@ function App() {
   const ParoolRef = useRef();
 
   const logiSisse = () => {
+    if (ParoolRef.currentvalue.length < 8) {
+      toast.error("Parool on liiga lühike");
+      return;
+    }
+
+    if (ParoolRef.current.valuetoLowerCase() === ParoolRef.current.value) {
+      toast.error("Parool peab sisaldama suurt tähte");
+      return;
+    }
+
+    if (ParoolRef.current.value.toUpperCase() === ParoolRef.current.value) {
+      toast.error("Parool peab sisaldama väikest tähte");
+      return;
+    }
+
+    if (ParoolRef.current.value.includes("%") === false) {
+      toast.error("Parool peab sisaldama protsendi märki");
+      return;
+    }
+
     if (ParoolRef.current.value === "123") {
       muudaSisselogitud("jah");
-      muudaSonum(KasutajaNimiRef.current.value + ", Oled sisselogitud");
-    } else {
-      muudaSonum("Vale parool");
+      toast.success(KasutajaNimiRef.current.value + ", Oled sisselogitud");
+      return;
     }
+
+    toast.error("Vale parool");
   }
 
   const logiValja = () => {
     muudaSisselogitud("ei");
-    muudaSonum("Oled edukalt väljalogitud")
+    toast.success("Oled edukalt väljalogitud");
   }
 
   return (
@@ -116,6 +138,12 @@ function App() {
     <iframe title="video" width="420" height="315"
     src="https://www.youtube.com/embed/tgbNymZ7vqY">
     </iframe>
+    
+    <ToastContainer
+          position="bottom-right"
+          autoClose={3000}
+          theme="dark"
+          />
     </div>
   );
 }
