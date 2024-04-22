@@ -10,12 +10,31 @@ import Seaded from './pages/Seaded';
 import LisaToode from './pages/LisaToode';
 import NotFound from './pages/NotFound';
 import Menyy from './components/Menyy';
+import { useState } from 'react';
+import Tooted from './pages/Tooted';
+import Hinnad from './pages/Hinnad';
+import Tootajad from './pages/Tootajad';
 
 function App() {
-  return (
-    <div className="App">
+  const [darkMode, setDarkMode] = useState(localStorage.getItem("isDarkTheme") === "true" ? true : false);
 
-     <Menyy /> 
+  const toLightMode = () => {
+    setDarkMode(false);
+    localStorage.setItem("isDarkTheme", false);
+  }
+
+  const toDarkMode = () => {
+    setDarkMode(true);
+    localStorage.setItem("isDarkTheme", true);
+  }
+
+  return (
+    <div className={darkMode === true? "App-dark" : "App"}>
+
+     <Menyy />
+
+     {darkMode === true && <img className='mode-button' onClick={toLightMode} src="/light-mode.png" alt="" />}
+     {darkMode === false && <img className='mode-button' onClick={toDarkMode} src="/dark-mode.png" alt="" />}
 
 {/* kui ollakse localhost:3000/osta-kinkekaart lehel, siis näidatakse sisu (HTML) */}
       <Routes>
@@ -27,6 +46,9 @@ function App() {
         <Route path="ostukorv" element={ <Ostukorv /> } />
         <Route path="seaded" element={ <Seaded /> } />
         <Route path="lisa-toode" element={ <LisaToode /> } />
+        <Route path="tooted" element={ <Tooted/> } />
+        <Route path="hinnad" element={ <Hinnad /> } />
+        <Route path="tootajad" element={ <Tootajad /> } />
         <Route path="*" element={ <NotFound /> } />
       </Routes>
 

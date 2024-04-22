@@ -16,12 +16,12 @@ function App() {
   const ParoolRef = useRef();
 
   const logiSisse = () => {
-    if (ParoolRef.currentvalue.length < 8) {
+    if (ParoolRef.current.value.length < 8) {
       toast.error("Parool on liiga lühike");
       return;
     }
 
-    if (ParoolRef.current.valuetoLowerCase() === ParoolRef.current.value) {
+    if (ParoolRef.current.value.toLowerCase() === ParoolRef.current.value) {
       toast.error("Parool peab sisaldama suurt tähte");
       return;
     }
@@ -36,7 +36,7 @@ function App() {
       return;
     }
 
-    if (ParoolRef.current.value === "123") {
+    if (ParoolRef.current.value.includes("123") === true) {
       muudaSisselogitud("jah");
       toast.success(KasutajaNimiRef.current.value + ", Oled sisselogitud");
       return;
@@ -49,6 +49,7 @@ function App() {
     muudaSisselogitud("ei");
     toast.success("Oled edukalt väljalogitud");
   }
+
 
   return (
     <div className="App">

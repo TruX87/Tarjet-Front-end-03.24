@@ -4,6 +4,7 @@ import toast, { Toaster } from 'react-hot-toast';
 function LisaToode() {
     const [sonum, muudaSonum] = useState("Lisa uus toode!");
     const luger = useRef();
+    // const [buttonDisabled, setButtonDisabled] = useState(false);
 
     // function lisa() {
                                 // function & const lahendus on samaväärne
@@ -28,13 +29,33 @@ const lisa = () => {
     }
 }
 
+const kontrolli = () => {
+  if (luger.current.value === "") {
+    muudaSonum("Viga: Toode ei saa olla tühja nimetusega!");
+    // setButtonDisabled(true);
+    return;
+  }
+  if (luger.current.value[0].toLowerCase() === luger.current.value[0]) {
+    muudaSonum("Viga: Toode ei alga suure tähega!");
+  // setButtonDisabled(true);
+    return;
+  }
+  if (luger.current.value.includes("/") === true) {
+    muudaSonum("Viga: Toode nimes ei saa olla kaldkriipsu!");
+  // setButtonDisabled(false);
+    return;
+  }
+  muudaSonum("");
+  // setButtonDisabled(false);
+}
+
   return (
     <div>
         <div>{sonum}</div>
         <label>Toote nimi </label>
-        <input ref={luger} type="text" />
-        <button onClick={lisa}>Sisesta</button>
-
+        <input onChange={kontrolli} ref={luger} type="text" />
+        <button disabled={sonum.startsWith("Viga:")} onClick={lisa}>Sisesta</button>
+        {/* <button disabled={buttonDisabled === true} onClick={lisa}>Sisesta</button> */}
         <Toaster
             position="bottom-center"
             reverseOrder={false}
