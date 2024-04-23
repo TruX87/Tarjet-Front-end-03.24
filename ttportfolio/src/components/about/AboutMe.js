@@ -23,8 +23,8 @@ const AboutMe = () => {
             Eesti
           </li>
           <li className="aboutRightLi">
-            <span className="aboutRightLiSpan">Amet:</span>
-            Tegevjuht
+            <span className="aboutRightLiSpan">Tegevjuht:</span>
+            MaiTar Solutions OÜ
           </li>
           <li className="aboutRightLi">
             <span className="aboutRightLiSpan">Aadress:</span>

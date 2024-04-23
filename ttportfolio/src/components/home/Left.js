@@ -34,24 +34,24 @@ const Left = () => {
             <Cursor cursorBlinking="false" cursorStyle="|" />
           </p>
           <div className="flex justify-center gap-2 mt-2">
-            <span className="hover:text-designColor duration-300 cursor-pointer text-xl">
+            {/* <span className="hover:text-designColor duration-300 cursor-pointer text-xl">
               <FaGithub />
-            </span>
+            </span> */}
             <span className="hover:text-designColor duration-300 cursor-pointer text-xl">
               <FaLinkedin />
             </span>
-            <span className="hover:text-designColor duration-300 cursor-pointer text-xl">
+            {/* <span className="hover:text-designColor duration-300 cursor-pointer text-xl">
               <SiYoutubemusic />
-            </span>
+            </span> */}
             <span className="hover:text-designColor duration-300 cursor-pointer text-xl">
               <BsFacebook />
             </span>
-            <span className="hover:text-designColor duration-300 cursor-pointer text-xl">
+            {/* <span className="hover:text-designColor duration-300 cursor-pointer text-xl">
               <FiInstagram />
-            </span>
-            <span className="hover:text-designColor duration-300 cursor-pointer text-xl">
+            </span> */}
+            {/* <span className="hover:text-designColor duration-300 cursor-pointer text-xl">
               <AiFillTwitterCircle />
-            </span>
+            </span> */}
             <span className="hover:text-designColor duration-300 cursor-pointer text-xl">
               <FiMail />
             </span>
