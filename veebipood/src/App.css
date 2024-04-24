@@ -39,7 +39,6 @@
   cursor: pointer;
   background-color: green;
   color: white;
-  /* border-color: green; */
   border: none;
 }
 
@@ -121,4 +120,47 @@ div {
 
 .App-dark .mode-button {
   filter: brightness(0) invert(1);
+}
+
+.nuppReset {
+  margin-right: 1rem;
+  padding: 7px;
+  color: black;
+  font-weight: 600;
+  border-radius: 4px;
+  border: solid red 2px;
+}
+
+.nuppReset:hover {
+  transform: scale(95%);
+}
+
+.nuppFilter {
+  margin: 3px;
+  padding: 7px;
+  color: black;
+  font-weight: 500;
+  border-radius: 4px;
+  border: solid blueviolet 2px;
+}
+
+.nuppFilter:hover {
+  transform: scale(95%);
+}
+
+.vastusText {
+  font-weight: 700;
+}
+
+.nuppKeskmineHind {
+  margin: 3px;
+  padding: 7px;
+  color: black;
+  font-weight: 500;
+  border-radius: 4px;
+  border: solid blueviolet 2px;
+}
+
+.nuppKeskmineHind:hover {
+  transform: scale(95%);
 }

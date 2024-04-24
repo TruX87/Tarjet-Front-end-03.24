@@ -31,7 +31,7 @@ function App() {
   return (
     <div className={darkMode === true? "App-dark" : "App"}>
 
-     <Menyy />
+     <Menyy /><br />
 
      {darkMode === true && <img className='mode-button' onClick={toLightMode} src="/light-mode.png" alt="" />}
      {darkMode === false && <img className='mode-button' onClick={toDarkMode} src="/dark-mode.png" alt="" />}
