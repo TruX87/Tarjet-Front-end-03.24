@@ -41,6 +41,19 @@ function Menyy() {
       <Link to="tootajad">
         <button className="nupp1">Töötajad</button>
       </Link>
+      <br /><br />
+      <Link to="/halda-esindused">
+        <button className="nupp1">Halda esindusi</button>
+      </Link>
+      <Link to="/halda-hinnad">
+        <button className="nupp1">Halda hindu</button>
+      </Link>
+      <Link to="/halda-tootajad">
+        <button className="nupp1">Halda töötajaid</button>
+      </Link>
+      <Link to="/halda-tooted">
+        <button className="nupp1">Halda tooteid</button>
+      </Link>
     </div>
   )
 }

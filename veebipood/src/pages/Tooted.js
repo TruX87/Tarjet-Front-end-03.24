@@ -1,15 +1,10 @@
 import React from 'react'
 import { useState } from 'react';
+import ostukorvJSON from "../data/ostukorv.json";
+import tootedFailist from "../data/tooted.json";
 
 function Tooted() {
-  const [tooted, muudaTooted] = useState(["Nobe","BMW","Tesla","Saab","Opel"]);
-
-  // sorteeri a-z +
-  // sorteeri z-a +
-  // sorteeri tähed kasv +
-  // sorteeri tähed kah +
-  // sorteeri kolmas täht tähestiku järjekorras +
-  //koguarv +
+  const [tooted, muudaTooted] = useState(tootedFailist.slice());
 
 
   const sorteeriAZ = () => {
@@ -39,6 +34,12 @@ const sorteeriKolmasTähtAZ = () => {
   muudaTooted(tooted.slice());
 }
 
+const lisaOstukorvi = (toode) => {
+  ostukorvJSON.push(toode);
+  alert("Edukalt lisatud ostukorvi! " + toode);
+  // muudaTooted(ostukorvJSON.slice());   //ei muuda HTMLi (ei muuda tooteid), kui elisame ostukorvi
+}
+
   return (
     <div><br />
       <button className='nuppFilter' onClick={sorteeriAZ}>Sorteeri A-Z</button>
@@ -48,8 +49,11 @@ const sorteeriKolmasTähtAZ = () => {
       <button className='nuppFilter' onClick={sorteeriKolmasTähtAZ}>Sorteeri kolmandast tähest A-Z</button>
       <br /><br />
         <div>
-            <text className='vastusText'>Töödete koguarv:</text> {tooted.length} <text className='vastusText'>tk</text><br />
-            <br />{tooted.map(t => <div>{t}</div>)}
+            <span className='vastusText'>Töödete koguarv:</span> {tooted.length} <span className='vastusText'>tk</span><br />
+            <br />{tooted.map(t => <div>
+              {t}
+              <button onClick={() => lisaOstukorvi(t)}>Lisa ostukorvi</button>
+              </div>)}
         </div>
     </div>
   )

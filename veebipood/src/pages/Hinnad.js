@@ -1,10 +1,15 @@
 import React from 'react'
 import { useState } from 'react'
+import hinnadJSON from "../data/hinnad.json";
 
 function Hinnad() {
-    const [hinnad, muudaHinnad] = useState([31, 5, 123, 52, 8, 321, 12, 9, 41]);
+    const [hinnad, muudaHinnad] = useState(hinnadJSON.slice());
     const [uusHind, muudaUusHind] = useState('');
     const [hindKustutamine, muudaHindKustutamine] = useState('');
+
+    const originaali = () => {
+        muudaHinnad(hinnadJSON.slice());
+    }
 
     const sorteeriKasvavalt = () => {
         hinnad.sort((a,b) => a - b);
@@ -22,7 +27,7 @@ function Hinnad() {
     }
 
     const reset = () => {
-        muudaHinnad([31, 5, 123, 52, 8, 321, 12, 9, 41]);
+        muudaHinnad(hinnadJSON.slice());
     }
 
     const arvutaKeskmineHind = () => {
@@ -51,8 +56,10 @@ function Hinnad() {
         muudaHindKustutamine('');
     }
 
+
     return (
     <div>
+        <button onClick={originaali}>Originaali</button>
         <button className='nuppReset' onClick={reset}>Taasta algväärtused</button>
         <button onClick={() => muudaHinnad([])}>Kustuta kõik</button>
         <button onClick={sorteeriKasvavalt}> Sorteeri kasvavalt</button>
@@ -67,8 +74,13 @@ function Hinnad() {
         <button onClick={eemaldaHind}>Eemalda hind</button>
         
         <div>{hinnad.length} tk</div><br />
-        {hinnad.map(hind => <div>{hind} €</div>)}
-        {/* {hinnad.map((hind, index) => <div key={index}>{hind} €</div>)} */}
+        {/* {hinnad.map(hind => <div>{hind} €</div>)} */}
+        {hinnad.map((hind, index) => 
+        <div key={index}>
+            {hind} € 
+            </div>)}
+        
+        <br />
         <button className='nuppKeskmineHind' onClick={arvutaKeskmineHind}>Arvuta keskmine hind</button>
     </div>
   )

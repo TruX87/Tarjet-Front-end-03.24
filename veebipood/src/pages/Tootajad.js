@@ -86,16 +86,9 @@ const filtreeriPaarisTähed = () => {
     const vastus = tootajad.filter(nimi => nimi.length % 2 === 0);
     muudaTootajad(vastus);
 }
-//nupp kolmas täht A-Z +
-// teine täht A-Z +
-
-//filtreeri
-//- Täpselt 3 tähelised + 
-//- rohkem kui 5 tähelised +
-//-"ai" lühendit sisaldavad + 
-//-kellel on kolmas täht "i" +
-//-"M" tähega algavad + 
-// Huvitav: paarisarv tähti
+//HALDA failist otse
+//Lisa lõppu juurde
+// kustutamine
 
   return (
     <div>
@@ -117,7 +110,7 @@ const filtreeriPaarisTähed = () => {
         <br /><br />
         <div>
             <button className='nuppReset' onClick={reset}>Taasta algasetus</button>
-            <text className='vastusText'>Töötajate koguarv:</text> {tootajad.length} <text className='vastusText'>tk</text><br />
+            <span className='vastusText'>Töötajate koguarv:</span> {tootajad.length} <span className='vastusText'>tk</span><br />
                 {tootajad.map(t => <div>{t}</div>)}
         </div>
         {/* <div>Urmet</div>

@@ -1,21 +1,49 @@
 import React from 'react'
 import { useState } from 'react';
 import { Link } from 'react-router-dom'
+import ostukorvFailist from "../data/ostukorv.json";
 
 function Ostukorv() {
-  const [tooted, muudaToodet] = useState(["Coca","Fanta","Sprite","Red bull"]);
+  const [tooted, muudaTooted] = useState(ostukorvFailist.slice());
   const [sonum, muudaSonum] = useState("");
     
     const reset = () => {
-        muudaToodet([]);
+        ostukorvFailist.splice(0);
+        muudaTooted(ostukorvFailist.slice());
         muudaSonum("Ostukorv on tühi");
     }
 
-  // ["Coca","Fanta","Sprite","Red bull"]
+    // const kustutaEsimene = () => {
+    //   tooted.splice(0, 1);   // 0-esimene(mitmendat kustutan); 1- kustuta üks(mitut kustutan korraga)   .remove()   .delete()
+    //   muudaTooted(tooted.slice()); // HTMLi uuenduseks
+    // }
 
-  //Koguarv +
-  // tühjendamise nupp +
-  // kui ostukorv tühi, siis alles kuvab ,,Ostukorv on tühi''
+    // const kustutaTeine = () => {
+    //   tooted.splice(1, 1);  
+    //   muudaTooted(tooted.slice()); 
+    // }
+
+    // const kustutaKolmas = () => {
+    //   tooted.splice(2, 1);  
+    //   muudaTooted(tooted.slice()); 
+    // }
+
+    const kustuta = (jrknr) => {
+      ostukorvFailist.splice(jrknr, 1);  
+      muudaTooted(ostukorvFailist.slice()); 
+    }
+
+    const lisaVichy = () => {
+      ostukorvFailist.push("Vichy");
+      muudaTooted(ostukorvFailist.slice()); 
+    }
+
+    const lisa = (toode) => {
+      ostukorvFailist.push(toode);
+      muudaTooted(ostukorvFailist.slice()); 
+    }
+
+
   return (
     <div>
         <Link to="/avaleht">Mine avalehele</Link>
@@ -23,8 +51,20 @@ function Ostukorv() {
         <div>{sonum}</div>
         <div>
           <button className='nuppReset' onClick={reset}>Tühjenda ostukorv</button>
-            <text className='vastusText'>Otukorvis olevate esemete arv:</text> {tooted.length} <text className='vastusText'>tk</text><br />
-            {tooted.map(t => <div key={t}>{t}</div>)}
+          {/* <button onClick={() => kustuta(0)}>Kustuta esimene</button>
+          <button onClick={() => kustuta(1)}>Kustuta teine</button>
+          <button onClick={() => kustuta(2)}>Kustuta kolmas</button> */}
+          <button onClick={lisaVichy}>Lisa Vishy</button>
+          <button onClick={() => lisa("Vitamin Well")}>Lisa Vitamin Well</button>
+            <span className='vastusText'>Otukorvis olevate esemete arv:</span> 
+            {tooted.length} 
+            <span className='vastusText'>tk</span>
+            <br />
+            {tooted.map((t, index) => 
+            <div key={index}>
+              {t} <button onClick={() => kustuta(index)}>x</button> 
+                  <button onClick={() => lisa(t)}>Lisa lõppu juurde</button>
+            </div>)}
         </div>
     </div>
   )

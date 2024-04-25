@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 
+//Toote faili lisamine
+//
 function LisaToode() {
     const [sonum, muudaSonum] = useState("Lisa uus toode!");
     const luger = useRef();
