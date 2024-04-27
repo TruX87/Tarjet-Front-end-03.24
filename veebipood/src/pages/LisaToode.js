@@ -1,10 +1,12 @@
 import React, { useRef, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
+import tootedFailist from "../data/tooted.json";
 
 //Toote faili lisamine
 //
 function LisaToode() {
     const [sonum, muudaSonum] = useState("Lisa uus toode!");
+    const [tooted, muudaTooted] = useState(tootedFailist.slice());
     const luger = useRef();
     // const [buttonDisabled, setButtonDisabled] = useState(false);
 

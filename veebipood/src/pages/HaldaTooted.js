@@ -8,8 +8,10 @@ function HaldaTooted() {
   const [tooted, muudaTooted] = useState(tootedFailist.slice());
   const toodeRef = useRef();
 
-  const kustuta = () => {
-//tootedFailist.splice
+  const kustuta = (toode) => {
+    tootedFailist.splice(toode);
+    muudaTooted(tootedFailist.slice());
+
   }
   const lisa = (toode) => {
     tootedFailist.push(toode);

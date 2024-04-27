@@ -1,11 +1,12 @@
 import React from 'react'
 import { useState } from 'react'
+import tootajadJSON from "../data/tootajad.json";
 
 function Tootajad() {
-    const [tootajad, muudaTootajad] = useState(["Urmet","Kaido","Liina","Maiki","Heidi","Epp","Kaire","Anet","Maarja"]);
+    const [tootajad, muudaTootajad] = useState(tootajadJSON.slice());
     
     const reset = () => {
-        muudaTootajad(["Urmet","Kaido","Liina","Maiki","Heidi","Epp","Kaire","Anet","Maarja"]);
+        muudaTootajad(tootajadJSON.slice());
     }
 
     const sorteeriAZ = () => {
@@ -86,7 +87,27 @@ const filtreeriPaarisTähed = () => {
     const vastus = tootajad.filter(nimi => nimi.length % 2 === 0);
     muudaTootajad(vastus);
 }
-//HALDA failist otse
+
+const kustuta = (indeks) => {
+    const uuedTootajad = tootajad.filter((_, index) => index !== indeks);
+    muudaTootajad(uuedTootajad);
+}
+
+const lisa = (uusIsik) => {
+    muudaTootajad([...tootajad, uusIsik]);
+}
+// const kustuta = (isik) => {
+//     tootajadJSON.splice(isik);
+//     muudaTootajad(tootajadJSON.slice());
+
+// }
+//   const lisa = (isik) => {
+//     tootajadJSON.push(isik);
+//     muudaTootajad(tootajadJSON.slice());
+// }
+
+
+//HALDA failist otse + 
 //Lisa lõppu juurde
 // kustutamine
 
@@ -111,7 +132,11 @@ const filtreeriPaarisTähed = () => {
         <div>
             <button className='nuppReset' onClick={reset}>Taasta algasetus</button>
             <span className='vastusText'>Töötajate koguarv:</span> {tootajad.length} <span className='vastusText'>tk</span><br />
-                {tootajad.map(t => <div>{t}</div>)}
+                    {tootajad.map((isik, index) => 
+            <div key={index}>
+                {isik}<button onClick={() => kustuta(index)}>x</button>
+                <button onClick={() => lisa(isik)}>Lisa lõppu juurde</button>
+            </div>)}
         </div>
         {/* <div>Urmet</div>
         <div>Kaido</div>

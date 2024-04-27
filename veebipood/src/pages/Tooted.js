@@ -10,7 +10,6 @@ function Tooted() {
   const sorteeriAZ = () => {
     tooted.sort((a,b) => a.localeCompare(b));
     muudaTooted(tooted.slice());
-    
 }
 
 const sorteeriZA = () => {
