@@ -41,6 +41,9 @@ function Menyy() {
       <Link to="tootajad">
         <button className="nupp1">Töötajad</button>
       </Link>
+      <Link to="/logimine">
+        <button className="nupp1">Logi sisse</button>
+      </Link>
       <br /><br />
       <Link to="/halda-esindused">
         <button className="nupp1">Halda esindusi</button>

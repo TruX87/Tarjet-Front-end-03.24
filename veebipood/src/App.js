@@ -18,6 +18,7 @@ import HaldaHinnad from './pages/HaldaHinnad';
 import HaldaEsindused from './pages/HaldaEsindused';
 import HaldaTooted from './pages/HaldaTooted';
 import HaldaTootajad from './pages/HaldaTootajad';
+import Logimine from './pages/Logimine';
 
 function App() {
   const [darkMode, setDarkMode] = useState(localStorage.getItem("isDarkTheme") === "true" ? true : false);
@@ -58,6 +59,7 @@ function App() {
         <Route path="halda-esindused" element={ <HaldaEsindused /> } />
         <Route path="halda-hinnad" element={ <HaldaHinnad /> } />
         <Route path="*" element={ <NotFound /> } />
+        <Route path="logimine" element={ <Logimine /> } />
       </Routes>
 
       {/* <p>Tere tulemast!</p>  */}
