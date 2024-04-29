@@ -9,6 +9,7 @@ import Leht from './pages/Leht';
 import Loader from './pages/Loader';
 import {  ToastContainer, toast  } from 'react-toastify';
 import Books from './pages/Books';
+import Numbrid from './pages/Numbrid';
 
 function App() {
   const [sisselogitud, muudaSisselogitud] = useState("ei");
@@ -89,6 +90,9 @@ function App() {
       <Link to="books">
         <button>Books</button>
       </Link>
+      <Link to="numbrid">
+        <button>Numbrid</button>
+      </Link>
       <br /><br />
       <Routes>
         <Route path="avaleht" element={ <Avaleht /> }></Route>
@@ -98,6 +102,7 @@ function App() {
         <Route path="leht" element={ <Leht /> }></Route>
         <Route path="loader" element={ <Loader /> }></Route>
         <Route path="books" element={ <Books /> }></Route>
+        <Route path="numbrid" element={ <Numbrid /> }></Route>
       </Routes>
 <br /><br /><br /><br />
       {/* <button className="nupp">Roheline nupp</button>
