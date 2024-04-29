@@ -8,6 +8,7 @@ import { useRef, useState } from 'react';
 import Leht from './pages/Leht';
 import Loader from './pages/Loader';
 import {  ToastContainer, toast  } from 'react-toastify';
+import Books from './pages/Books';
 
 function App() {
   const [sisselogitud, muudaSisselogitud] = useState("ei");
@@ -85,6 +86,9 @@ function App() {
       <Link to="loader">
         <button>Loader</button>
       </Link>
+      <Link to="books">
+        <button>Books</button>
+      </Link>
       <br /><br />
       <Routes>
         <Route path="avaleht" element={ <Avaleht /> }></Route>
@@ -93,9 +97,10 @@ function App() {
         <Route path="seaded" element={ <Seaded /> }></Route>
         <Route path="leht" element={ <Leht /> }></Route>
         <Route path="loader" element={ <Loader /> }></Route>
+        <Route path="books" element={ <Books /> }></Route>
       </Routes>
 <br /><br /><br /><br />
-      <button className="nupp">Roheline nupp</button>
+      {/* <button className="nupp">Roheline nupp</button>
       <div className="text1">Sinine tekst</div>
       <div className="text2">Roheline tekst</div>
       <img className="pilt" src="https://www.saarevolley.ee/wp-content/uploads/2018/02/Netist-pilt-pallid-199x120x3.jpg" alt="pallid" />
@@ -138,7 +143,7 @@ function App() {
 </table>
     <iframe title="video" width="420" height="315"
     src="https://www.youtube.com/embed/tgbNymZ7vqY">
-    </iframe>
+    </iframe> */}
     
     <ToastContainer
           position="bottom-right"
