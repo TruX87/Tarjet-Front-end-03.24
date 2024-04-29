@@ -19,6 +19,9 @@ import HaldaEsindused from './pages/HaldaEsindused';
 import HaldaTooted from './pages/HaldaTooted';
 import HaldaTootajad from './pages/HaldaTootajad';
 import Logimine from './pages/Logimine';
+import Months from './pages/Months';
+import Animals from './pages/Animals';
+import Words from './pages/Words';
 
 function App() {
   const [darkMode, setDarkMode] = useState(localStorage.getItem("isDarkTheme") === "true" ? true : false);
@@ -60,6 +63,9 @@ function App() {
         <Route path="halda-hinnad" element={ <HaldaHinnad /> } />
         <Route path="*" element={ <NotFound /> } />
         <Route path="logimine" element={ <Logimine /> } />
+        <Route path="months" element={ <Months /> } />
+        <Route path="animals" element={ <Animals /> } />
+        <Route path="words" element={ <Words /> } />
       </Routes>
 
       {/* <p>Tere tulemast!</p>  */}
