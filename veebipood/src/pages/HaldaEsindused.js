@@ -20,11 +20,17 @@ function HaldaEsindused() {
     TalEsindusedFailist.push(esindusRef.current.value);
     muudaEsindus(TalEsindusedFailist.slice());
   }
+
+  const reset = () => {
+    muudaEsindus(["Ülemiste", "Rocca al Mare", "Magistrali", "Vesse", "Kristiine", "Järveotsa"]);
+}
+
   return (
     <div>
       <label>Esinduse nimi</label><br />
       <input ref={esindusRef} type="text" /><br />
       <button onClick={lisaEsindus}>Lisa</button><br />
+      <button className='nuppReset' onClick={reset}>Taasta algasetus</button>
       {esindus.map((esindus, index) => 
         <div key={index}>
               {esindus}
@@ -32,6 +38,9 @@ function HaldaEsindused() {
               <button onClick={() => lisa(esindus)}>Lisa lõppu juurde</button>
               <Link to={"/muuda-esindus/" + index}>
               <button>Muuda</button>
+              </Link>
+              <Link to={"/esindus/" + index}>
+              Vaata lähemalt
               </Link>
         </div>
     )}

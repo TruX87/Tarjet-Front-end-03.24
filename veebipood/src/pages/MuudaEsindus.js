@@ -22,7 +22,7 @@ function MuudaEsindus() {
   return (
     <div>
       <div>{sonum}</div>
-        <label htmlFor='nimi'>Toote nimi</label><br />
+        <label htmlFor='nimi'>Esinduse nimi</label><br />
         <input id='nimi' ref={nimiRef} type="text" defaultValue={esindus} /><br />
         <button onClick={muuda}>Muuda</button><br />
     </div>
