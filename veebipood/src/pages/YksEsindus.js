@@ -1,8 +1,18 @@
 import React from 'react'
+import { useParams } from 'react-router-dom';
+import TalEsindusedFailist from "../data/Talesindused.json"
+
 
 function YksEsindus() {
+    const {index} = useParams();
+    const esindus = TalEsindusedFailist[index];
+
   return (
-    <div>YksEsindus</div>
+    <div>
+      <div>Esinduse nimi: {esindus}</div>
+        <div>Asukoht: ....</div>
+        <div>Avatud: ....</div>
+    </div>
   )
 }
 

@@ -3,6 +3,7 @@ import TalesindusedFailist from "../data/Talesindused.json";
 import TaresindusedFailist from "../data/Taresindused.json";
 import PäresindusedFailist from "../data/Päresindused.json";
 import NaresindusedFailist from "../data/Naresindused.json";
+import { Link } from 'react-router-dom';
 
 function Esindused() {
     const [linn, muudaLinn] = useState("Tallinn");  // React teeb nii, tema vahetab olekuid
@@ -218,10 +219,13 @@ function Esindused() {
               <button className='nuppReset' onClick={reset}>Taasta algasetus</button>
               <span className='vastusText'>Keskuste koguarv:</span> {keskused.length} <span className='vastusText'>tk</span>
               </div><br />
-            {keskused.map((keskus, asutus) => 
-            <div key={asutus}>
-              {keskus} <button onClick={() => kustuta(asutus)}>x</button> 
+            {keskused.map((keskus, index) => 
+            <div key={index}>
+              {keskus} <button onClick={() => kustuta(index)}>x</button> 
                   <button onClick={() => lisa(keskus)}>Lisa lõppu juurde</button>
+                  <Link to={"/esindus/" + index}>
+              Vaata lähemalt
+              </Link>
               </div> )}
           </div>}
 

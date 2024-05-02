@@ -160,7 +160,7 @@ const kokku = () => {
             <div key={index}>
                 {isik}<button onClick={() => kustuta(index)}>x</button>
                 <button onClick={() => lisa(isik)}>Lisa lõppu juurde</button>
-                <Link to={"/toode/" + index}>
+                <Link to={"/tootaja/" + index}>
               Vaata lähemalt
               </Link>
             </div>)}
