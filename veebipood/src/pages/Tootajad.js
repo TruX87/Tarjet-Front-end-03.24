@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import tootajadJSON from "../data/tootajad.json";
+import { Link } from 'react-router-dom';
 
 function Tootajad() {
     const [tootajad, muudaTootajad] = useState(tootajadJSON.slice());
@@ -111,9 +112,32 @@ const lisa = (uusIsik) => {
 //Lisa lõppu juurde
 // kustutamine
 
+const kokku = () => {
+    //const --> ei luba võrdusmärgiga teda muuta
+    //let --> lubab muutujat otse võrdusmärgiga muuta
+    let summa = 0;
+    // summa = summa + 5;
+    // summa = summa + 5;
+    // summa = summa + 4;
+    // summa = summa + 3;
+    // summa = summa + 6;
+    //["Kaido","Epp","Maarja"].forEach()
+    // forEach("Kaido" => 5 = 0 + 5)
+    // forEach("Epp" => 8 = 5 + 3)
+    // forEach("Maarja" => 14 = 8 + 6)
+    tootajad.forEach(t => summa = summa + t.length);
+    return summa;
+}
+//kui teeme funktsiooni onClickiga:
+//onClick={lisa}  või  onClick{() => lisa()}
+
+// Kui teeme funktsiooni väljakutse mitte onClickiga
+  // <div> {lisa()} </div>
+
   return (
     <div>
         <br />
+        <div>Tähemärgid kokku: {kokku()}</div><br />
         <button className='nuppFilter' onClick={sorteeriAZ}>Sorteeri A-Z</button>
         <button className='nuppFilter' onClick={sorteeriZA}>Sorteeri Z-A</button>
         <button className='nuppFilter' onClick={sorteeriKolmasTähtAZ}>Sorteeri kolmandast tähest A-Z</button>
@@ -136,6 +160,9 @@ const lisa = (uusIsik) => {
             <div key={index}>
                 {isik}<button onClick={() => kustuta(index)}>x</button>
                 <button onClick={() => lisa(isik)}>Lisa lõppu juurde</button>
+                <Link to={"/toode/" + index}>
+              Vaata lähemalt
+              </Link>
             </div>)}
         </div>
         {/* <div>Urmet</div>

@@ -2,6 +2,7 @@ import React from 'react'
 import tootedFailist from "../data/tooted.json";
 import { useState } from 'react';
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 
 function HaldaTooted() {
@@ -33,6 +34,9 @@ function HaldaTooted() {
               {toode}
               <button onClick={() => kustuta(index)}>x</button>
               <button onClick={() => lisa(toode)}>Lisa lõppu juurde</button>
+              <Link to={"/muuda-toode/" + index}>
+              <button>Muuda</button>
+              </Link>
         </div>
     )}
     </div>

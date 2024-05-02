@@ -22,6 +22,14 @@ import Logimine from './pages/Logimine';
 import Months from './pages/Months';
 import Animals from './pages/Animals';
 import Words from './pages/Words';
+import YksToode from './pages/YksToode';
+import YksHind from './pages/YksHind';
+import YksTootaja from './pages/YksTootaja';
+import YksEsindus from './pages/YksEsindus';
+import MuudaToode from './pages/MuudaToode';
+import MuudaTootaja from './pages/MuudaTootaja';
+import MuudaHind from './pages/MuudaHind';
+import MuudaEsindus from './pages/MuudaEsindus';
 
 function App() {
   const [darkMode, setDarkMode] = useState(localStorage.getItem("isDarkTheme") === "true" ? true : false);
@@ -66,6 +74,14 @@ function App() {
         <Route path="months" element={ <Months /> } />
         <Route path="animals" element={ <Animals /> } />
         <Route path="words" element={ <Words /> } />
+        <Route path="toode/:index" element={ <YksToode /> } />
+        <Route path="hind/:index" element={ <YksHind /> } />
+        <Route path="tootaja/:index" element={ <YksTootaja /> } />
+        <Route path="esindus/:index" element={ <YksEsindus /> } />
+        <Route path="muuda-esindus/:index" element={ <MuudaEsindus /> } />
+        <Route path="muuda-hind/:index" element={ <MuudaHind /> } />
+        <Route path="muuda-tootaja/:index" element={ <MuudaTootaja /> } />
+        <Route path="muuda-toode/:index" element={ <MuudaToode /> } />
       </Routes>
 
       {/* <p>Tere tulemast!</p>  */}
@@ -76,3 +92,7 @@ function App() {
 }
 
 export default App;
+
+// Firebase-i üleslaadimiseks:
+// npm run build  ----> pakib failid kokku "build" kausta
+// firebase deploy   ---> saadab kokkupakitud failid Firebase serverisse

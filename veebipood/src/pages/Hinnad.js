@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import hinnadJSON from "../data/hinnad.json";
+import { Link } from 'react-router-dom';
 
 function Hinnad() {
     const [hinnad, muudaHinnad] = useState(hinnadJSON.slice());
@@ -55,10 +56,15 @@ function Hinnad() {
         muudaHinnad(filtritud);
         muudaHindKustutamine('');
     }
-
+    const kokku = () => {
+        let summa = 0;
+        hinnad.forEach(h => summa = summa + h);
+        return summa;
+    }
 
     return (
     <div>
+        <div>Hinnad kokku: {kokku()}</div>
         <button onClick={originaali}>Originaali</button>
         <button className='nuppReset' onClick={reset}>Taasta algväärtused</button>
         <button onClick={() => muudaHinnad([])}>Kustuta kõik</button>
@@ -78,6 +84,7 @@ function Hinnad() {
         {hinnad.map((hind, index) => 
         <div key={index}>
             {hind} € 
+            <Link to={"/hind/" + index}>Vaata lähemalt</Link>
             </div>)}
         
         <br />

@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import hinnadJSON from "../data/hinnad.json";
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 function HaldaHinnad() {
   const [hinnad, muudaHinnad] = useState(hinnadJSON.slice());
@@ -28,7 +29,7 @@ const lisa = (hind) => {
   }
   return (
     <div>
-      <label>Toote nimi</label><br />
+      <label>Hind</label><br />
       <input ref={hindRef} type="text" /><br />
       <button onClick={lisaHind}>Lisa</button><br />
 
@@ -38,6 +39,9 @@ const lisa = (hind) => {
         <div key={index}>
             {hind} € <button onClick={() => kustuta(index)}>x</button>
                     <button onClick={() => lisa(hind)}>Lisa lõppu juurde</button>
+                    <Link to={"/muuda-hind/" + index}>
+                    <button>Muuda</button>
+                    </Link>
             </div>)}
     </div>
   )
