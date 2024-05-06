@@ -1,10 +1,15 @@
 import React from 'react'
 import tootajadFailist from "../data/tootajad.json"
 import { useParams } from 'react-router-dom';
+import NotFound from './NotFound';
 
 function YksTootaja() {
   const {index} = useParams();
     const tootaja = tootajadFailist[index];
+
+    if (tootaja === undefined) {
+      return <NotFound />
+    }
 
   return (
     <div>

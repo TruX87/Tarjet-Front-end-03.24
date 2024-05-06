@@ -1,1 +1,11 @@
-[31, 5, 123, 52, 8, 321, 12, 9, 41]
+[
+    {"nr": 31, "lisaja": "Tarjet"}, 
+    {"nr": 5, "lisaja": "Tarjet"},
+    {"nr": 123, "lisaja": "Tarjet"},
+    {"nr": 52, "lisaja": "Tarjet"},
+    {"nr": 8, "lisaja": "Tarjet"},
+    {"nr": 321, "lisaja": "Tarjet"},
+    {"nr": 12, "lisaja": "Tarjet"},
+    {"nr": 9, "lisaja": "Tarjet"},
+    {"nr": 41, "lisaja": "Tarjet"}
+]

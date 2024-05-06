@@ -33,10 +33,10 @@ function Ostukorv() {
       muudaTooted(ostukorvFailist.slice()); 
     }
 
-    const lisaVichy = () => {
-      ostukorvFailist.push("Vichy");
-      muudaTooted(ostukorvFailist.slice()); 
-    }
+    // const lisaVichy = () => {
+    //   ostukorvFailist.push("Vichy");
+    //   muudaTooted(ostukorvFailist.slice()); 
+    // }
 
     const lisa = (toode) => {
       ostukorvFailist.push(toode);
@@ -54,15 +54,17 @@ function Ostukorv() {
           {/* <button onClick={() => kustuta(0)}>Kustuta esimene</button>
           <button onClick={() => kustuta(1)}>Kustuta teine</button>
           <button onClick={() => kustuta(2)}>Kustuta kolmas</button> */}
-          <button onClick={lisaVichy}>Lisa Vishy</button>
-          <button onClick={() => lisa("Vitamin Well")}>Lisa Vitamin Well</button>
-            <span className='vastusText'>Otukorvis olevate esemete arv:</span> 
+          {/* <button onClick={lisaVichy}>Lisa Vishy</button>
+          <button onClick={() => lisa("Vitamin Well")}>Lisa Vitamin Well</button> */}
+            <span className='vastusText'>Ostukorvis olevate esemete arv:</span> 
             {tooted.length} 
             <span className='vastusText'>tk</span>
             <br />
             {tooted.map((t, index) => 
             <div key={index}>
-              {t} <button onClick={() => kustuta(index)}>x</button> 
+              <img className='Header-logo' src={t.pilt} alt="" />
+              {t.nimi} - {t.hind} € 
+                  <button onClick={() => kustuta(index)}>x</button> 
                   <button onClick={() => lisa(t)}>Lisa lõppu juurde</button>
             </div>)}
         </div>

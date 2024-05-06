@@ -9,34 +9,34 @@ function Tooted() {
 
 
   const sorteeriAZ = () => {
-    tooted.sort((a,b) => a.localeCompare(b));
+    tooted.sort((a,b) => a.nimi.localeCompare(b.nimi));
     muudaTooted(tooted.slice());
 }
 
 const sorteeriZA = () => {
-    tooted.sort((a,b) => b.localeCompare(a));
+    tooted.sort((a,b) => b.nimi.localeCompare(a.nimi));
     muudaTooted(tooted.slice());
 } 
 
 const sorteeriTahemargidVaiksemast = () => {
-    tooted.sort((a,b) => a.length - b.length);
+    tooted.sort((a,b) => a.nimi.length - b.nimi.length);
     muudaTooted(tooted.slice());
 }
 
 const sorteeriTahemargidKah = () => {
-    tooted.sort((a,b) => b.length - a.length);
+    tooted.sort((a,b) => b.nimi.length - a.nimi.length);
     muudaTooted(tooted.slice());
 
 }
 
 const sorteeriKolmasTähtAZ = () => {
-  tooted.sort((a,b) => a[2].localeCompare(b[2]));
+  tooted.sort((a,b) => a.nimi[2].localeCompare(b.nimi[2]));
   muudaTooted(tooted.slice());
 }
 
 const lisaOstukorvi = (toode) => {
   ostukorvJSON.push(toode);
-  alert("Edukalt lisatud ostukorvi! " + toode);
+  alert("Edukalt lisatud ostukorvi! " + toode.nimi);
   // muudaTooted(ostukorvJSON.slice());   //ei muuda HTMLi (ei muuda tooteid), kui elisame ostukorvi
 }
 
@@ -50,10 +50,12 @@ const lisaOstukorvi = (toode) => {
       <br /><br />
         <div>
             <span className='vastusText'>Töödete koguarv:</span> {tooted.length} <span className='vastusText'>tk</span><br />
-            <br />{tooted.map((t, index) => <div>
-              {t}
-              <button onClick={() => lisaOstukorvi(t)}>Lisa ostukorvi</button>
-              <Link to={"/toode/" + index}>
+            <br />{tooted.map((t, index) => <div key={index}>
+              <img className='Header-logo' src={t.pilt} alt="" />
+              <div>{t.nimi}</div>
+              <div>{t.hind}</div>
+              <button disabled={t.aktiivne === false} onClick={() => lisaOstukorvi(t)}>Lisa ostukorvi</button>
+              <Link to={"/toode/" + t.nimi}>
               Vaata lähemalt
               </Link>
               </div>)}

@@ -6,6 +6,9 @@ function MuudaToode() {
     const {index} = useParams();
     const toode = tootedFailist[index];
     const nimiRef = useRef();
+    const hindRef = useRef();
+    const piltRef = useRef();
+    const aktiivsusRef = useRef();
     const navigate = useNavigate();
     const [sonum, muudaSonum] = useState("");
 
@@ -22,9 +25,20 @@ function MuudaToode() {
         muudaSonum("Toote nimetus ei saa olla tühi!")
         return;
       }
+
+      const uusToode = {
+        "nimi": nimiRef.current.value, 
+        "hind": Number(hindRef.current.value), 
+        "aktiivne": aktiivsusRef.current.checked, 
+        "pilt": piltRef.current.value,
+      };
       
-        tootedFailist[index] = nimiRef.current.value;
+        tootedFailist[index] = uusToode;
         navigate("/halda-tooted");
+    }
+
+    if (toode === undefined) {
+      return <div>Toodet ei leitud</div>
     }
 
     //Nupul peaks olema kas onClick={} või <Link to="" 
@@ -35,7 +49,17 @@ function MuudaToode() {
         {/* <div>{toode}</div> */}
         <div>{sonum}</div>
         <label htmlFor='nimi'>Toote nimi</label><br />
-        <input id='nimi' ref={nimiRef} type="text" defaultValue={toode} /><br />
+        <input id='nimi' ref={nimiRef} type="text" defaultValue={toode.nimi} /><br />
+        
+      <label>Toote hind</label><br />
+      <input ref={hindRef} type="number" defaultValue={toode.hind} /><br />
+
+      <label>Toote pilt</label><br />
+      <input ref={piltRef} type="text" defaultValue={toode.pilt} /><br />
+
+      <label>Toote aktiivsus</label><br />
+      <input ref={aktiivsusRef} type="checkbox" defaultChecked={toode.aktiivne} /><br />
+
         <button onClick={muuda}>Muuda</button><br />
     </div>
   )

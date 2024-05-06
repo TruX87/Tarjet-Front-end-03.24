@@ -24,7 +24,7 @@ const lisa = (hind) => {
   }
 
   const lisaHind = () => {
-    hinnadJSON.push(hindRef.current.value);
+    hinnadJSON.push({nr: hindRef.current.value, lisaja: "Pipi"});
     muudaHinnad(hinnadJSON.slice());
   }
   return (
@@ -37,7 +37,8 @@ const lisa = (hind) => {
         {/* {hinnad.map(hind => <div>{hind} €</div>)} */}
         {hinnad.map((hind, index) => 
         <div key={index}>
-            {hind} € <button onClick={() => kustuta(index)}>x</button>
+            {hind.nr} € - lisaja: {hind.lisaja}
+            <button onClick={() => kustuta(index)}>x</button>
                     <button onClick={() => lisa(hind)}>Lisa lõppu juurde</button>
                     <Link to={"/muuda-hind/" + index}>
                     <button>Muuda</button>

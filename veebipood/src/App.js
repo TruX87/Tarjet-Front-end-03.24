@@ -74,8 +74,8 @@ function App() {
         <Route path="months" element={ <Months /> } />
         <Route path="animals" element={ <Animals /> } />
         <Route path="words" element={ <Words /> } />
-        <Route path="toode/:index" element={ <YksToode /> } />
-        <Route path="hind/:index" element={ <YksHind /> } />
+        <Route path="toode/:nimi" element={ <YksToode /> } />
+        <Route path="hind/:summa" element={ <YksHind /> } />
         <Route path="tootaja/:index" element={ <YksTootaja /> } />
         <Route path="esindus/:index" element={ <YksEsindus /> } />
         <Route path="muuda-esindus/:index" element={ <MuudaEsindus /> } />

@@ -13,17 +13,17 @@ function Hinnad() {
     }
 
     const sorteeriKasvavalt = () => {
-        hinnad.sort((a,b) => a - b);
+        hinnad.sort((a,b) => a.nr - b.nr);
         muudaHinnad(hinnad.slice());
     }
 
     const sorteeriZA = () => {
-        hinnad.sort((a,b) => b.toString().localeCompare(a));
+        hinnad.sort((a,b) => b.nr.toString().localeCompare(a.nr));
         muudaHinnad(hinnad.slice());
     }
 
     const filtreeriSuuremadKui50 = () => {
-        const vastus = hinnad.filter(hind => hind > 50);
+        const vastus = hinnad.filter(hind => hind.nr > 50);
         muudaHinnad(vastus);
     }
 
@@ -32,33 +32,33 @@ function Hinnad() {
     }
 
     const arvutaKeskmineHind = () => {
-        const sum = hinnad.reduce((acc, curr) => acc + curr, 0);
+        const sum = hinnad.reduce((acc, curr) => acc + curr.nr, 0);
         const keskmine = sum / hinnad.length;
         alert(`Keskmine hind: ${keskmine.toFixed(2)} €`);
     }
 
     const filtreeriVahemikuJargi = (algus, lopp) => {
-        const filtered = hinnad.filter(hind => hind >= algus && hind <= lopp);
+        const filtered = hinnad.filter(hind => hind.nr >= algus && hind.nr <= lopp);
         muudaHinnad(filtered);
     }
 
     const lisaUusHind = () => {
         if (!uusHind) return;
         const hind = parseInt(uusHind);
-        muudaHinnad([...hinnad, hind]);
+        muudaHinnad([...hinnad, hind]);   // Hind muuda ära objektiks halda hinnad sees
         muudaUusHind('');
     }
 
     const eemaldaHind = () => {
         if (!hindKustutamine) return;
         const hind = parseInt(hindKustutamine);
-        const filtritud = hinnad.filter(h => h !== hind);
+        const filtritud = hinnad.filter(h => h.nr !== hind);
         muudaHinnad(filtritud);
         muudaHindKustutamine('');
     }
     const kokku = () => {
         let summa = 0;
-        hinnad.forEach(h => summa = summa + h);
+        hinnad.forEach(h => summa = summa + h.nr);
         return summa;
     }
 
@@ -83,8 +83,8 @@ function Hinnad() {
         {/* {hinnad.map(hind => <div>{hind} €</div>)} */}
         {hinnad.map((hind, index) => 
         <div key={index}>
-            {hind} € 
-            <Link to={"/hind/" + index}>Vaata lähemalt</Link>
+            {hind.nr} €
+            <Link to={"/hind/" + hind.nr}>Vaata lähemalt</Link>
             </div>)}
         
         <br />

@@ -3,28 +3,28 @@ import tootajadFailist from "../data/tootajad.json"
 import { Link } from 'react-router-dom';
 
 function HaldaTootajad() {
-    const [tootaja, muudaTootaja] = useState(tootajadFailist.slice());
+    const [tootajad, muudaTootajad] = useState(tootajadFailist.slice());
     const tootajaRef = useRef();
     
   
     const kustuta = (index) => {
       tootajadFailist.splice(index, 1);
-      muudaTootaja(tootajadFailist.slice());
+      muudaTootajad(tootajadFailist.slice());
   
     }
     const lisa = (tootaja) => {
       tootajadFailist.push(tootaja);
-      muudaTootaja(tootajadFailist.slice());
+      muudaTootajad(tootajadFailist.slice());
     }
     
   
     const lisaTootaja = () => {
       tootajadFailist.push(tootajaRef.current.value);
-      muudaTootaja(tootajadFailist.slice());
+      muudaTootajad(tootajadFailist.slice());
     }
 
     const reset = () => {
-      muudaTootaja(["Urmet","Kaido","Liina","Maiki","Heidi","Epp","Kaire","Anet","Maarja"]);
+      muudaTootajad(["Urmet","Kaido","Liina","Maiki","Heidi","Epp","Kaire","Anet","Maarja"]);
   }
 
   return (
@@ -33,7 +33,7 @@ function HaldaTootajad() {
       <input ref={tootajaRef} type="text" /><br />
       <button onClick={lisaTootaja}>Lisa</button><br />
       <button className='nuppReset' onClick={reset}>Taasta algasetus</button>
-      {tootaja.map((tootaja, index) => 
+      {tootajad.map((tootaja, index) => 
         <div key={index}>
               {tootaja}
               <button onClick={() => kustuta(index)}>x</button>
