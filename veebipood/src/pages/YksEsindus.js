@@ -5,8 +5,8 @@ import NotFound from './NotFound';
 
 
 function YksEsindus() {
-    const {index} = useParams();
-    const esindus = TalEsindusedFailist[index];
+    const {nimi} = useParams();
+    const esindus = TalEsindusedFailist.find(t => t === nimi);
 
     if (esindus === undefined) {
       return <NotFound />

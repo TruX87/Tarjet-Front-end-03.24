@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 function HaldaEsindused() {
   const [esindus, muudaEsindus] = useState(TalEsindusedFailist.slice());
   const esindusRef = useRef();
+  const keskusRef = useRef();
+    const telRef = useRef();
+    const aadressRef = useRef();
 
   const kustuta = (index) => {
     TalEsindusedFailist.splice(index, 1);
@@ -17,8 +20,17 @@ function HaldaEsindused() {
   }
 
   const lisaEsindus = () => {
-    TalEsindusedFailist.push(esindusRef.current.value);
+    const uusEsindus = {
+      "keskus": keskusRef.current.value, 
+      "tel": Number(telRef.current.value), 
+      "aadress": aadressRef.current.checked, 
+    };
+    TalEsindusedFailist.push(uusEsindus);
     muudaEsindus(TalEsindusedFailist.slice());
+
+    keskusRef.current.value = "";
+    telRef.current.value = "";
+    aadressRef.current.value = "";
   }
 
   const reset = () => {
@@ -28,12 +40,18 @@ function HaldaEsindused() {
   return (
     <div>
       <label>Esinduse nimi</label><br />
-      <input ref={esindusRef} type="text" /><br />
+      <input ref={keskusRef} type="text" /><br />
+      <label>Tel nr.</label><br />
+      <input ref={telRef} type="number" /><br />
+      <label>Aadress</label><br />
+      <input ref={aadressRef} type="text" /><br />
+
       <button onClick={lisaEsindus}>Lisa</button><br />
+
       <button className='nuppReset' onClick={reset}>Taasta algasetus</button>
       {esindus.map((esindus, index) => 
         <div key={index}>
-              {esindus}
+              {esindus.keskus}
               <button onClick={() => kustuta(index)}>x</button>
               <button onClick={() => lisa(esindus)}>Lisa lõppu juurde</button>
               <Link to={"/muuda-esindus/" + index}>

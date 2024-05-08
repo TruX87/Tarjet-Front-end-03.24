@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import tootajadFailist from "../data/tootajad.json"
+import NotFound from './NotFound';
 
 function MuudaTootaja() {
     const {index} = useParams();
@@ -18,6 +19,10 @@ function MuudaTootaja() {
       
         tootajadFailist[index] = nimiRef.current.value;
         navigate("/halda-tootajad");
+    }
+
+    if (tootaja === undefined) {
+      return <NotFound />
     }
 
   return (

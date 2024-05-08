@@ -76,8 +76,8 @@ function App() {
         <Route path="words" element={ <Words /> } />
         <Route path="toode/:nimi" element={ <YksToode /> } />
         <Route path="hind/:summa" element={ <YksHind /> } />
-        <Route path="tootaja/:index" element={ <YksTootaja /> } />
-        <Route path="esindus/:index" element={ <YksEsindus /> } />
+        <Route path="tootaja/:nimi" element={ <YksTootaja /> } />
+        <Route path="esindus/:nimi" element={ <YksEsindus /> } />
         <Route path="muuda-esindus/:index" element={ <MuudaEsindus /> } />
         <Route path="muuda-hind/:index" element={ <MuudaHind /> } />
         <Route path="muuda-tootaja/:index" element={ <MuudaTootaja /> } />

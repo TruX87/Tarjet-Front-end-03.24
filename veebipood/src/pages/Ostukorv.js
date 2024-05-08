@@ -43,6 +43,12 @@ function Ostukorv() {
       muudaTooted(ostukorvFailist.slice()); 
     }
 
+    const kokku = () => {
+      let summa = 0;
+      tooted.forEach(t => summa = summa + t.hind);
+      return summa;
+   }
+
 
   return (
     <div>
@@ -60,6 +66,7 @@ function Ostukorv() {
             {tooted.length} 
             <span className='vastusText'>tk</span>
             <br />
+            <div>Toodete hinnad kokku: {kokku()} €</div>
             {tooted.map((t, index) => 
             <div key={index}>
               <img className='Header-logo' src={t.pilt} alt="" />

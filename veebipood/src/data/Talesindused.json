@@ -1,1 +1,8 @@
-["Ülemiste", "Rocca al Mare", "Magistrali", "Vesse", "Kristiine", "Järveotsa"]
+[
+    {"keskus" : "Ülemiste", "tel" : "55", "aadress" : ""},
+    {"keskus" : "Rocca al Mare", "tel" : "55", "aadress" : ""},
+    {"keskus" : "Magistrali", "tel" : "55", "aadress" : ""},
+    {"keskus" : "Vesse", "tel" : "55", "aadress" : ""},
+    {"keskus" : "Kristiine", "tel" : "55", "aadress" : ""},
+    {"keskus" : "Järveotsa", "tel" : "55", "aadress" : ""}
+]

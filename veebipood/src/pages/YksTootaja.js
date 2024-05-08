@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom';
 import NotFound from './NotFound';
 
 function YksTootaja() {
-  const {index} = useParams();
-    const tootaja = tootajadFailist[index];
+  const {nimi} = useParams();
+    const tootaja = tootajadFailist.find(t => t === nimi);
 
     if (tootaja === undefined) {
       return <NotFound />

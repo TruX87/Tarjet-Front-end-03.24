@@ -14,7 +14,7 @@ function Esindused() {
     const [keskused4, muudaKeskused4] = useState(NaresindusedFailist.slice());
 
     const sorteeriAZ = () => {
-      keskused.sort((a,b) => a.localeCompare(b));
+      keskused.sort((a,b) => a.keskus.localeCompare(b.keskus));
       keskused2.sort((a,b) => a.localeCompare(b));
       keskused3.sort((a,b) => a.localeCompare(b));
       keskused4.sort((a,b) => a.localeCompare(b));
@@ -25,7 +25,7 @@ function Esindused() {
   }
 
     const sorteeriZA = () => {
-      keskused.sort((a,b) => b.localeCompare(a));
+      keskused.sort((a,b) => b.keskus.localeCompare(a.keskus));
       keskused2.sort((a,b) => b.localeCompare(a));
       keskused3.sort((a,b) => b.localeCompare(a));
       keskused4.sort((a,b) => b.localeCompare(a));
@@ -36,7 +36,7 @@ function Esindused() {
   }
 
     const sorteeriTahemargidKasv = () => {
-     keskused.sort((a,b) => a.length - b.length);
+     keskused.sort((a,b) => a.keskus.length - b.keskus.length);
      keskused2.sort((a,b) => a.length - b.length);
      keskused3.sort((a,b) => a.length - b.length);
      keskused4.sort((a,b) => a.length - b.length);
@@ -47,7 +47,7 @@ function Esindused() {
   }
 
   const sorteeriTahemargidKah = () => {
-    keskused.sort((a,b) => b.length - a.length);
+    keskused.sort((a,b) => b.keskus.length - a.keskus.length);
     keskused2.sort((a,b) => b.length - a.length);
     keskused3.sort((a,b) => b.length - a.length);
     keskused4.sort((a,b) => b.length - a.length);
@@ -58,7 +58,7 @@ function Esindused() {
  }
 
     const sorteeriKolmasTähtAZ = () => {
-      keskused.sort((a,b) => a[2].localeCompare(b[2]));
+      keskused.sort((a,b) => a.keskus[2].localeCompare(b.keskus[2]));
       keskused2.sort((a,b) => a[2].localeCompare(b[2]));
       keskused3.sort((a,b) => a[2].localeCompare(b[2]));
       keskused3.sort((a,b) => a[2].localeCompare(b[2]));
@@ -69,7 +69,7 @@ function Esindused() {
   }
 
     const filtreeri9Tahelised = () => {
-      const vastus = keskused.filter(t => t.length === 9);
+      const vastus = keskused.filter(t => t.keskus.length === 9);
       const vastus2 = keskused2.filter(t => t.length === 9);
       const vastus3 = keskused3.filter(t => t.length === 9);
       const vastus4 = keskused4.filter(t => t.length === 9);
@@ -80,7 +80,7 @@ function Esindused() {
   }
 
     const filtreeriVahemalt7 = () => {
-      const vastus = keskused.filter(t => t.length >= 7);
+      const vastus = keskused.filter(t => t.keskus.length >= 7);
       const vastus2 = keskused2.filter(t => t.length >= 7);
       const vastus3 = keskused3.filter(t => t.length >= 7);
       const vastus4 = keskused4.filter(t => t.length >= 7);
@@ -91,7 +91,7 @@ function Esindused() {
   }
 
     const filtreeriISSisaldav = () => {
-      const vastus = keskused.filter(t => t.includes("is"));
+      const vastus = keskused.filter(t => t.keskus.includes("is"));
       const vastus2 = keskused2.filter(t => t.includes("is"));
       const vastus3 = keskused3.filter(t => t.includes("is"));
       const vastus4 = keskused4.filter(t => t.includes("is"));
@@ -102,7 +102,7 @@ function Esindused() {
   }
 
     const filtreeriITaht3 = () => {
-      const vastus = keskused.filter(name => name.charAt(2) === 'i');
+      const vastus = keskused.filter(name => name.keskus.charAt(2) === 'i');
       const vastus2 = keskused2.filter(name => name.charAt(2) === 'i');
       const vastus3 = keskused3.filter(name => name.charAt(2) === 'i');
       const vastus4 = keskused4.filter(name => name.charAt(2) === 'i');
@@ -113,7 +113,7 @@ function Esindused() {
   }
 
     const filtreeriETahegaLop = () => {
-      const vastus = keskused.filter(t => t.endsWith("e"));
+      const vastus = keskused.filter(t => t.keskus.endsWith("e"));
       const vastus2 = keskused2.filter(t => t.endsWith("e"));
       const vastus3 = keskused3.filter(t => t.endsWith("e"));
       const vastus4 = keskused4.filter(t => t.endsWith("e"));
@@ -124,7 +124,7 @@ function Esindused() {
   }
 
   const kustuta = (index) => {
-    const uuedKeskused = keskused.filter((_, i) => i !== index);
+    const uuedKeskused = keskused.filter((_, i) => i.keskus !== index);
     const uuedKeskused2 = keskused2.filter((_, i) => i !== index);
     const uuedKeskused3 = keskused3.filter((_, i) => i !== index);
     const uuedKeskused4 = keskused4.filter((_, i) => i !== index);
@@ -135,7 +135,7 @@ function Esindused() {
   };
   
   const lisa = (keskus) => {
-    muudaKeskused([...keskused, keskus]);
+    muudaKeskused([...keskused, keskus.keskus]);
     muudaKeskused2([...keskused2, keskus]);
     muudaKeskused3([...keskused3, keskus]);
     muudaKeskused4([...keskused4, keskus]);
@@ -221,9 +221,10 @@ function Esindused() {
               </div><br />
             {keskused.map((keskus, index) => 
             <div key={index}>
-              {keskus} <button onClick={() => kustuta(index)}>x</button> 
-                  <button onClick={() => lisa(keskus)}>Lisa lõppu juurde</button>
-                  <Link to={"/esindus/" + index}>
+              {keskus.keskus} 
+                  <button onClick={() => kustuta(index)}>x</button> 
+                  <button onClick={() => lisa(keskus.nimi)}>Lisa lõppu juurde</button>
+                  <Link to={"/esindus/" + keskus}>
               Vaata lähemalt
               </Link>
               </div> )}
