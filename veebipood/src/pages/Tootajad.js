@@ -50,42 +50,42 @@ function Tootajad() {
         // .filter("Coca" => 4 < 5) TRUE ehk jätame alles
         // .filter(Fanta" => 5 < 5) TRUE
         // .filter(Sprite" => 6 < 5) TRUE
-        const vastus = tootajad.filter(t => t.length < 5);
+        const vastus = tootajadJSON.filter(t => t.length < 5);
         muudaTootajad(vastus);
     }
 
     const filtreeriSuuremKui5 = () => {
-        const vastus = tootajad.filter(t => t.length > 5);
+        const vastus = tootajadJSON.filter(t => t.length > 5);
         muudaTootajad(vastus);
     }
 
     const filtreeriKTahegaAlg = () => {
-        const vastus = tootajad.filter(t => t.startsWith("K"));
+        const vastus = tootajadJSON.filter(t => t.startsWith("K"));
         muudaTootajad(vastus);
  }
 
     const filtreeriAISisaldav = () => {
-        const vastus = tootajad.filter(t => t.includes("ai"));
+        const vastus = tootajadJSON.filter(t => t.includes("ai"));
         muudaTootajad(vastus);
 }
 
     const filtreeri3Tahelised = () => {
-        const vastus = tootajad.filter(t => t.length === 3);
+        const vastus = tootajadJSON.filter(t => t.length === 3);
         muudaTootajad(vastus);
 }
 
 const filtreeriMTahegaAlg = () => {
-    const vastus = tootajad.filter(t => t.startsWith("M"));
+    const vastus = tootajadJSON.filter(t => t.startsWith("M"));
     muudaTootajad(vastus);
 }
 
 const filtreeriITaht3 = () => {
-    const vastus = tootajad.filter(name => name.charAt(2) === 'i');
+    const vastus = tootajadJSON.filter(name => name.charAt(2) === 'i');
     muudaTootajad(vastus);
 }
 
 const filtreeriPaarisTähed = () => {
-    const vastus = tootajad.filter(nimi => nimi.length % 2 === 0);
+    const vastus = tootajadJSON.filter(nimi => nimi.length % 2 === 0);
     muudaTootajad(vastus);
 }
 

@@ -27,6 +27,10 @@ function HaldaTooted() {
   const lisaToode = () => {
     // kui muudan HTMLs inputi tüüpi:   <input type="number" />   <input type="checkbox" />
     // siis pean muutma ka kuidas ma Refi seest väärtust küsin
+    // console.log(nimiRef);
+    // console.log(nimiRef.current);
+    // console.log(nimiRef.current.value);
+
     const uusToode = {
       "nimi": nimiRef.current.value, 
       "hind": Number(hindRef.current.value), 
@@ -74,12 +78,13 @@ function HaldaTooted() {
         </thead>
         <tbody>
           {tooted.map((toode, index) => 
-             <tr key={index}>
+             <tr key={index} className={toode.aktiivne ? "aktiivne" : "mitteaktiivne"}> 
              <td><img className='Header-logo' src={toode.pilt} alt="" /></td>
              {/* <td>{toode.pilt}</td>  */}
              <td>{toode.nimi}</td> 
              <td>{toode.hind}</td> 
              <td>{toode.aktiivne ? <span>Aktiivne</span> : <span>Mitteaktiivne</span>}</td>
+             {/* <td>{toode.aktiivne && <span>Aktiivne</span>}</td> */}
              <td>
               <button onClick={() => kustuta(index)}>x</button>
               {/* <button onClick={() => lisa(toode)}>Lisa lõppu juurde</button> */}

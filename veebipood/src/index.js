@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import App from './App';
 //import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
+import 'leaflet/dist/leaflet.css';
 
 
 

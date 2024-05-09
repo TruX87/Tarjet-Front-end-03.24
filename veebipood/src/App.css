@@ -177,3 +177,20 @@ table {
 th, td {
   border: 1px solid black;
 }
+
+.aktiivne {
+  background-color: rgb(166, 207, 166);
+}
+
+.mitteaktiivne {
+  background-color: rgb(211, 147, 147);
+}
+
+.map {
+  height: 600px;
+  /* margin-left: 10%;
+  margin-right: 10%; */
+  /* sama asi aga lühemalt --->  margin: 0 10% */
+  margin: 0 20%;
+  border-radius: 20px;
+}

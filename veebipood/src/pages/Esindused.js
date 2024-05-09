@@ -69,7 +69,7 @@ function Esindused() {
   }
 
     const filtreeri9Tahelised = () => {
-      const vastus = keskused.filter(t => t.keskus.length === 9);
+      const vastus = TalesindusedFailist.filter(t => t.keskus.length === 9);
       const vastus2 = keskused2.filter(t => t.length === 9);
       const vastus3 = keskused3.filter(t => t.length === 9);
       const vastus4 = keskused4.filter(t => t.length === 9);
@@ -80,7 +80,7 @@ function Esindused() {
   }
 
     const filtreeriVahemalt7 = () => {
-      const vastus = keskused.filter(t => t.keskus.length >= 7);
+      const vastus = TalesindusedFailist.filter(t => t.keskus.length >= 7);
       const vastus2 = keskused2.filter(t => t.length >= 7);
       const vastus3 = keskused3.filter(t => t.length >= 7);
       const vastus4 = keskused4.filter(t => t.length >= 7);
@@ -91,7 +91,7 @@ function Esindused() {
   }
 
     const filtreeriISSisaldav = () => {
-      const vastus = keskused.filter(t => t.keskus.includes("is"));
+      const vastus = TalesindusedFailist.filter(t => t.keskus.includes("is"));
       const vastus2 = keskused2.filter(t => t.includes("is"));
       const vastus3 = keskused3.filter(t => t.includes("is"));
       const vastus4 = keskused4.filter(t => t.includes("is"));
@@ -102,7 +102,7 @@ function Esindused() {
   }
 
     const filtreeriITaht3 = () => {
-      const vastus = keskused.filter(name => name.keskus.charAt(2) === 'i');
+      const vastus = TalesindusedFailist.filter(name => name.keskus.charAt(2) === 'i');
       const vastus2 = keskused2.filter(name => name.charAt(2) === 'i');
       const vastus3 = keskused3.filter(name => name.charAt(2) === 'i');
       const vastus4 = keskused4.filter(name => name.charAt(2) === 'i');
@@ -113,7 +113,7 @@ function Esindused() {
   }
 
     const filtreeriETahegaLop = () => {
-      const vastus = keskused.filter(t => t.keskus.endsWith("e"));
+      const vastus = TalesindusedFailist.filter(t => t.keskus.endsWith("e"));
       const vastus2 = keskused2.filter(t => t.endsWith("e"));
       const vastus3 = keskused3.filter(t => t.endsWith("e"));
       const vastus4 = keskused4.filter(t => t.endsWith("e"));
@@ -124,18 +124,19 @@ function Esindused() {
   }
 
   const kustuta = (index) => {
-    const uuedKeskused = keskused.filter((_, i) => i.keskus !== index);
-    const uuedKeskused2 = keskused2.filter((_, i) => i !== index);
-    const uuedKeskused3 = keskused3.filter((_, i) => i !== index);
-    const uuedKeskused4 = keskused4.filter((_, i) => i !== index);
-    muudaKeskused(uuedKeskused);
-    muudaKeskused2(uuedKeskused2);
-    muudaKeskused3(uuedKeskused3);
-    muudaKeskused4(uuedKeskused4);
+    keskused.splice(index, 1);
+    // const uuedKeskused = TalesindusedFailist.filter((_, i) => i !== index);
+    // const uuedKeskused2 = keskused2.filter((_, i) => i !== index);
+    // const uuedKeskused3 = keskused3.filter((_, i) => i !== index);
+    // const uuedKeskused4 = keskused4.filter((_, i) => i !== index);
+    muudaKeskused(keskused.slice());
+    // muudaKeskused2(uuedKeskused2);
+    // muudaKeskused3(uuedKeskused3);
+    // muudaKeskused4(uuedKeskused4);
   };
   
   const lisa = (keskus) => {
-    muudaKeskused([...keskused, keskus.keskus]);
+    muudaKeskused([...keskused, keskus]);
     muudaKeskused2([...keskused2, keskus]);
     muudaKeskused3([...keskused3, keskus]);
     muudaKeskused4([...keskused4, keskus]);
@@ -224,7 +225,7 @@ function Esindused() {
               {keskus.keskus} 
                   <button onClick={() => kustuta(index)}>x</button> 
                   <button onClick={() => lisa(keskus.nimi)}>Lisa lõppu juurde</button>
-                  <Link to={"/esindus/" + keskus}>
+                  <Link to={"/esindus/" + keskus.keskus}>
               Vaata lähemalt
               </Link>
               </div> )}

@@ -40,6 +40,20 @@ const lisaOstukorvi = (toode) => {
   // muudaTooted(ostukorvJSON.slice());   //ei muuda HTMLi (ei muuda tooteid), kui elisame ostukorvi
 }
 
+const reset = () => {
+  muudaTooted(tootedFailist.slice());
+}
+
+const filtreeriAktiivsed = () => {
+  const vastus = tootedFailist.filter(t => t.aktiivne === true);
+  muudaTooted(vastus);
+}
+
+const filtreeriOdavad = () => {
+  const vastus = tootedFailist.filter(t => t.hind < 40000);
+  muudaTooted(vastus);
+}
+
   return (
     <div><br />
       <button className='nuppFilter' onClick={sorteeriAZ}>Sorteeri A-Z</button>
@@ -48,6 +62,9 @@ const lisaOstukorvi = (toode) => {
       <button className='nuppFilter' onClick={sorteeriTahemargidKah}>Sorteeri tähemärgid kahanevalt</button>
       <button className='nuppFilter' onClick={sorteeriKolmasTähtAZ}>Sorteeri kolmandast tähest A-Z</button>
       <br /><br />
+      <button onClick={reset}>Reset</button>
+      <button onClick={filtreeriAktiivsed}>Jäta alles aktiivsed</button>
+      <button onClick={filtreeriOdavad}>Jäta alles odavamad kui 40 000</button>
         <div>
             <span className='vastusText'>Töödete koguarv:</span> {tooted.length} <span className='vastusText'>tk</span><br />
             <br />{tooted.map((t, index) => <div key={index}>

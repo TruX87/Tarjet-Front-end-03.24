@@ -6,8 +6,16 @@ function HaldaEsindused() {
   const [esindus, muudaEsindus] = useState(TalEsindusedFailist.slice());
   const esindusRef = useRef();
   const keskusRef = useRef();
-    const telRef = useRef();
-    const aadressRef = useRef();
+  const telRef = useRef();
+  const aadressRef = useRef();
+
+  // kui järjekorranumber ei muutu, võin kasutada järjekorranumbreid
+//      kustutamiseks ja muutma minemiseks
+
+// järjekorranumber muutub kui: sorteerime, filtreerime
+
+// siis ei saa järjekorranumbrit kustutamiseks kasutada ja pean objekti
+//    sulgude seest saatma, et ise järjekorranumber üles otsida
 
   const kustuta = (index) => {
     TalEsindusedFailist.splice(index, 1);
@@ -57,7 +65,7 @@ function HaldaEsindused() {
               <Link to={"/muuda-esindus/" + index}>
               <button>Muuda</button>
               </Link>
-              <Link to={"/esindus/" + index}>
+              <Link to={"/esindus/" + esindus.keskus}>
               Vaata lähemalt
               </Link>
         </div>

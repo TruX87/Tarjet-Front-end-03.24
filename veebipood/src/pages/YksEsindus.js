@@ -6,7 +6,7 @@ import NotFound from './NotFound';
 
 function YksEsindus() {
     const {nimi} = useParams();
-    const esindus = TalEsindusedFailist.find(t => t === nimi);
+    const esindus = TalEsindusedFailist.find(t => t.keskus === nimi);
 
     if (esindus === undefined) {
       return <NotFound />
@@ -14,7 +14,7 @@ function YksEsindus() {
 
   return (
     <div>
-      <div>Esinduse nimi: {esindus}</div>
+      <div>Esinduse nimi: {esindus.keskus}</div>
         <div>Asukoht: ....</div>
         <div>Avatud: ....</div>
     </div>

@@ -30,6 +30,8 @@ import MuudaToode from './pages/MuudaToode';
 import MuudaTootaja from './pages/MuudaTootaja';
 import MuudaHind from './pages/MuudaHind';
 import MuudaEsindus from './pages/MuudaEsindus';
+import Shops from './pages/Shops';
+import { ContactUs } from './pages/ContactUs';
 
 function App() {
   const [darkMode, setDarkMode] = useState(localStorage.getItem("isDarkTheme") === "true" ? true : false);
@@ -82,6 +84,9 @@ function App() {
         <Route path="muuda-hind/:index" element={ <MuudaHind /> } />
         <Route path="muuda-tootaja/:index" element={ <MuudaTootaja /> } />
         <Route path="muuda-toode/:index" element={ <MuudaToode /> } />
+        <Route path="*" element={ <NotFound /> } />
+        <Route path="shops" element={ <Shops /> } />
+        <Route path="contact" element={ <ContactUs /> } />
       </Routes>
 
       {/* <p>Tere tulemast!</p>  */}
