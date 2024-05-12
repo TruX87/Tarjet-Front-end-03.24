@@ -4,11 +4,11 @@ import {Link} from 'react-router-dom';
 function NavigationBar() {
   return (
     <div>
-        <Link to="homepage">
+        <Link to="/">
         <button>Homepage</button>
       </Link>
 
-      <Link to="cart">
+      <Link to="/cart">
         <button>Cart</button>
       </Link>
     </div>
