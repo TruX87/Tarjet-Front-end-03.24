@@ -1,0 +1,25 @@
+.image {
+    height: 500px;
+}
+
+.background {
+    background-color: rgba(15, 226, 33, 0.219);
+    padding: 10% 0;
+    
+}
+
+.home-button {
+    cursor: pointer;
+    color: azure;
+    width: 150px;
+    height: 40px;
+    background-color: rgb(20, 64, 209);
+    border-color: rgb(20, 64, 209);
+    padding: 3px 5px;
+    border-radius: 15px;
+    font-weight: 900;
+}
+
+.home-button:hover {
+    transform: scale(1.25)
+}

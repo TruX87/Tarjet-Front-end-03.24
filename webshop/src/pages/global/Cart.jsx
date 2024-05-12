@@ -21,9 +21,21 @@ const addToEnd = (product) => {
   setCart(productsFromCart.slice()); 
 }
 
+const cartSum = () => {
+  let total = 0;
+  cart.forEach(t => total = total + t.price);
+  return total;
+}
+
   return (
     <div>
       <button onClick={empty}>Empty the cart</button>
+      <br />
+      <span>Number of items in the cart: </span> 
+            {cart.length} 
+            <span> pcs</span>
+            <br />
+            <div>Price total: {cartSum()} €</div>
       {cart.length > 0 ? (
         cart.map(product =>
           <div key={product.id}>

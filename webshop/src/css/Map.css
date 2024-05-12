@@ -1,0 +1,16 @@
+.map {
+    height: 600px;
+    /* margin-left: 10%;
+    margin-right: 10%; */
+    /* sama asi aga lühemalt --->  margin: 0 10% */
+    margin: 0 10%;
+    border-radius: 20px;
+  }
+  
+  .map2 {
+    /* height: 700px; */
+    /* margin-left: 10%;
+    margin-right: 10%; */
+    /* sama asi aga lühemalt --->  margin: 0 10% */
+    margin: 0 10%;
+  }
