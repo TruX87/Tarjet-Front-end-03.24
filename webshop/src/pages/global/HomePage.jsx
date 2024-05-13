@@ -2,9 +2,12 @@ import React from 'react'
 import productsFromFile from "../../data/products.json";
 // import productsFromCart from "../../data/cart.json";
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 
 function HomePage() {
   const [products, setProducts] = useState(productsFromFile);
+  
 
 function addToCart(product) {
   const cartLS = JSON.parse(localStorage.getItem("cart")) || [];
@@ -25,6 +28,8 @@ function addToCart(product) {
           <div>{product.title}</div>
           <div>{product.price} €</div>
           <button onClick={() => addToCart(product)}>Add to cart</button>
+          {/* <button onClick={"/product/" + product.title}>Look closer</button> */}
+          <Link to={"/product/" + product.title}>Look closer</Link>
         </div>
       )}
     </div>
