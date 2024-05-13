@@ -12,6 +12,7 @@ function Map2() {
           frameborder="0" 
           scrolling="no" 
           allowfullscreen id="atlist-embed"
+          title="map"
           ></iframe>
 
 

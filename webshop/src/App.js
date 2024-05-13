@@ -16,6 +16,8 @@ import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import NavigationBar from './components/NavigationBar';
 
+
+
 function App() {
   return (
     <div className="App">

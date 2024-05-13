@@ -1,24 +1,26 @@
 import React, { useState } from 'react'
-import productsFromCart from "../../data/cart.json";
+// import productsFromCart from "../../data/cart.json";
 
 function Cart() {
-  const [cart, setCart] = useState(productsFromCart);
+  const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
   const [message, setMessage] = useState("Your cart is empty");
 
   const empty = () => {
-    productsFromCart.splice(0);
-    setCart(productsFromCart.slice());
-    // muudaSonum("Ostukorv on tühi");
+    cart.splice(0);
+    setCart(cart.slice()); //muudab HTMLi
+    localStorage.setItem("cart", JSON.stringify(cart)); //salvestab
 }
 
 const removeFromCart = (jrknr) => {
-  productsFromCart.splice(jrknr, 1);  
-  setCart(productsFromCart.slice()); 
+  cart.splice(jrknr, 1);  
+  setCart(cart.slice()); 
+  localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 const addToEnd = (product) => {
-  productsFromCart.push(product);
-  setCart(productsFromCart.slice()); 
+  cart.push(product);
+  setCart(cart.slice());
+  localStorage.setItem("cart", JSON.stringify(cart)); 
 }
 
 const cartSum = () => {
@@ -30,25 +32,24 @@ const cartSum = () => {
   return (
     <div>
       <button onClick={empty}>Empty the cart</button>
-      <br />
-      <span>Number of items in the cart: </span> 
-            {cart.length} 
-            <span> pcs</span>
-            <br />
-            <div>Price total: {cartSum()} €</div>
       {cart.length > 0 ? (
-        cart.map(product =>
-          <div key={product.id}>
+        cart.map((product, index) =>
+          <div key={index}>
             <img style={{ width: "100px" }} src={product.image} alt="" /> 
             <div>{product.title}</div>
             <div>{product.price}</div>
-            <button onClick={() => removeFromCart(product)}>x</button>
+            <button onClick={() => removeFromCart(index)}>x</button>
             <button onClick={() => addToEnd(product)}>Add to the end</button>
           </div>
         )
       ) : (
         <div>{message}</div>
       )}
+          <span>Number of items in the cart: </span> 
+            {cart.length} 
+            <span> pcs</span>
+            <br />
+            <div>Price total: {cartSum()} €</div>
     </div>
   );
 }

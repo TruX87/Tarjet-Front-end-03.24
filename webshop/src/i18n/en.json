@@ -1,0 +1,14 @@
+{ 
+    "maintain-categories": "Maintain categories",
+    "maintain-shops": "Maintain shops",
+    "add-product": "Add product",
+    "maintain-products": "Maintain products",
+    "nav": {
+    "admin": "Admin",
+    "shops": "Shops",
+    "contact": "Contact",
+    "cart": "Cart",
+    "login": "Log in",
+    "signup": "Sign up"
+        }
+ }
