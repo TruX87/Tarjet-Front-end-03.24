@@ -18,6 +18,16 @@ function NavigationBar() {
     localStorage.setItem("lang", "en");
   }
 
+  const changeLangGr = () => {
+    i18n.changeLanguage("gr");
+    localStorage.setItem("lang", "gr");
+  }
+
+  const changeLangFi = () => {
+    i18n.changeLanguage("fi");
+    localStorage.setItem("lang", "fi");
+  }
+
   return (
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
       <Container>
@@ -46,6 +56,8 @@ function NavigationBar() {
             <Nav.Link as={Link} to="/signup">{t('nav.signup')}</Nav.Link>
             <img className='lang' onClick={changeLangEn} src="/english.png" alt="Language" />
             <img className='lang' onClick={changeLangEt} src="/estonian.png" alt="Language" />
+            <img className='lang' onClick={changeLangGr} src="/german.png" alt="Language" />
+            <img className='lang' onClick={changeLangFi} src="/finnish.png" alt="Language" />
           </Nav>
         </Navbar.Collapse>
       </Container>

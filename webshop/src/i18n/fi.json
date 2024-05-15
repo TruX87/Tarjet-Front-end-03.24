@@ -1,0 +1,14 @@
+{
+    "maintain-categories": "Ylläpidä luokkia",
+    "maintain-shops": "Maintain kaupat",
+    "add-product": "Lisää tuote",
+    "maintain-products": "Ylläpidä tuotteita",
+    "nav": {
+    "admin": "Admin",
+    "kaupat": "Kaupat",
+    "contact": "Ota yhteyttä",
+    "kärry": "Oskuri",
+    "login": "Kirjaudu sisään",
+    "signup": "Rekisteröidy"
+        }
+ }

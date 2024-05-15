@@ -1,0 +1,14 @@
+{
+    "maintain-categories": "Kategorien pflegen",
+    "maintain-shops": "Geschäfte pflegen",
+    "add-product": "Produkt hinzufügen",
+    "maintain-products": "Produkte pflegen",
+    "nav": {
+    "admin": "Admin",
+    "shops": "Geschäfte",
+    "contact": "Kontakt",
+    "cart": "Warenkorb",
+    "login":"Einloggen",
+    "signup": "Anmelden"
+        }
+ }
