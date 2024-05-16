@@ -11,7 +11,15 @@ function HomePage() {
 
 function addToCart(product) {
   const cartLS = JSON.parse(localStorage.getItem("cart")) || [];
-  cartLS.push(product);
+  const found = cartLS.find(cp => cp.toode.id === product.id);
+  // const index = cartLS.findIndex();
+  if (found !== undefined) {  // index >= 0,   index !== -1
+    // found.kogus++;   // found.kogus += 1;    
+    // cartLS[index].kogus++;
+    found.kogus = found.kogus +1;
+  } else {
+    cartLS.push({"kogus": 1, "toode": product});
+  }
   localStorage.setItem("cart", JSON.stringify(cartLS));
 }
   // 1. võtame localStoragest          localStorage.getItem() || []
@@ -29,7 +37,7 @@ function addToCart(product) {
           <div>{product.price} €</div>
           <button onClick={() => addToCart(product)}>Add to cart</button>
           {/* <button onClick={"/product/" + product.title}>Look closer</button> */}
-          <Link to={"/product/" + product.title}>Look closer</Link>
+          <Link to={"/product/" + product.title.replaceAll(" ", "-").replaceAll(",", "").toLowerCase()}>Look closer</Link>
         </div>
       )}
     </div>

@@ -1,14 +1,38 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 // import productsFromCart from "../../data/cart.json";
 
 function Cart() {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
   const [message, setMessage] = useState("Your cart is empty");
+  const [parcelmachines, setParcelmachines] = useState([]);
+
+  // uef +enter
+  useEffect(() => {
+    fetch('https://www.omniva.ee/locations.json')
+      .then(response => response.json())
+      .then(json => setParcelmachines(json))
+  }, []);
 
   const empty = () => {
     cart.splice(0);
     setCart(cart.slice()); //muudab HTMLi
     localStorage.setItem("cart", JSON.stringify(cart)); //salvestab
+}
+
+const decreaseQuantity = (product) => {
+  product.kogus--;  //vähendab ühe võrra
+  if (product.kogus === 0) {
+    const index = cart.indexOf(product);
+    cart.splice(index, 1);
+  }
+  setCart(cart.slice()); //muudab HTMLi
+  localStorage.setItem("cart", JSON.stringify(cart)); //salvestab
+}
+
+const increaseQuantity = (product) => {
+  product.kogus++;  //suurendab ühe võrra
+  setCart(cart.slice()); //muudab HTMLi
+  localStorage.setItem("cart", JSON.stringify(cart)); //salvestab
 }
 
 const removeFromCart = (jrknr) => {
@@ -17,16 +41,16 @@ const removeFromCart = (jrknr) => {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-const addToEnd = (product) => {
-  cart.push(product);
-  setCart(cart.slice());
-  localStorage.setItem("cart", JSON.stringify(cart)); 
-}
+// const addToEnd = (product) => {
+//   cart.push(product);
+//   setCart(cart.slice());
+//   localStorage.setItem("cart", JSON.stringify(cart)); 
+// }
 
 const cartSum = () => {
   let total = 0;
-  cart.forEach(t => total = total + t.price);
-  return total;
+  cart.forEach(t => total = total + t.toode.price * t.kogus);
+  return total.toFixed(2);  //fikseeritud 2 komakoha peale
 }
 
   return (
@@ -35,11 +59,15 @@ const cartSum = () => {
       {cart.length > 0 ? (
         cart.map((product, index) =>
           <div key={index}>
-            <img style={{ width: "100px" }} src={product.image} alt="" /> 
-            <div>{product.title}</div>
-            <div>{product.price}</div>
+            <img style={{ width: "100px" }} src={product.toode.image} alt="" /> 
+            <div>{product.toode.title}</div>
+            <div>{product.toode.price.toFixed(2)}</div>
+            <button onClick={() => decreaseQuantity(product)}>-</button>
+            <div>{product.kogus}</div>
+            <button onClick={() => increaseQuantity(product)}>+</button>
+            <div>{(product.toode.price * product.kogus).toFixed(2)}</div>
             <button onClick={() => removeFromCart(index)}>x</button>
-            <button onClick={() => addToEnd(product)}>Add to the end</button>
+            {/* <button onClick={() => addToEnd(product)}>Add to the end</button> */}
           </div>
         )
       ) : (
@@ -50,6 +78,11 @@ const cartSum = () => {
             <span> pcs</span>
             <br />
             <div>Price total: {cartSum()} €</div>
+            <select>
+            {parcelmachines
+            .filter(pm => pm.A0_NAME === "EE")
+            .map(pm => <option>{pm.NAME}</option>)}
+            </select>
     </div>
   );
 }

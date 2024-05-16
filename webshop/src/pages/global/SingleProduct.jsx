@@ -4,7 +4,8 @@ import productsFromFile from "../../data/products.json";
 
 function SingleProduct() {
     const {title} = useParams();
-    const product = productsFromFile.find(t => t.title === title);
+    const product = productsFromFile.find(t => t.title.replaceAll(" ", "-").replaceAll(",", "").toLowerCase() === title
+  );
     
     if (product === undefined) {
       return <div>Product not found</div>

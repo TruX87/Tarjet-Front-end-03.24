@@ -15,6 +15,7 @@ import MaintainShops from './pages/admin/MaintainShops';
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import NavigationBar from './components/NavigationBar';
+import Supplier from './pages/admin/Supplier';
 
 
 
@@ -31,10 +32,11 @@ function App() {
 
         <Route path="/admin" element={ <AdminHome /> } />
         <Route path="/admin/add-product" element={ <AddProduct /> } />
-        <Route path="/admin/edit-product/:index" element={ <EditProduct /> } />
+        <Route path="/admin/edit-product/:productId" element={ <EditProduct /> } />
         <Route path="/admin/maintain-products" element={ <MaintainProducts /> } />
         <Route path="/admin/maintain-categories" element={ <MaintainCategories /> } />
         <Route path="/admin/maintain-shops" element={ <MaintainShops /> } />
+        <Route path="/admin/supplier" element={ <Supplier /> } />
 
         <Route path="/login" element={ <Login /> } />
         <Route path="/signup" element={ <Signup /> } />

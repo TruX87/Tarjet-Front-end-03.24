@@ -3,65 +3,32 @@ import productsFromFile from "../../data/products.json";
 import { useState } from 'react';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import "../../css/MaintainProducts.css";
 
 function MaintainProducts() {
   const [products, setProducts] = useState(productsFromFile.slice());
-  const titleRef = useRef();
-  const priceRef = useRef();
-  const imageRef = useRef();
-  const categoryRef = useRef();
-  const descriptionRef = useRef();
-  const ratingRef = useRef();
+  const searchRef = useRef();
+  
 
   const deleteProduct = (product) => {
-    productsFromFile.splice(product, 1);
-    setProducts(productsFromFile.slice());
+    const index = productsFromFile.indexOf(product);
+    productsFromFile.splice(index, 1);
+    // setProducts(productsFromFile.slice());
+    searchFromProducts();
 
   }
-
-  const addProduct = () => {
-    const newProduct = {
-      "title": titleRef.current.value, 
-      "price": Number(priceRef.current.value), 
-      "category": categoryRef.current.value, 
-      "image": imageRef.current.value,
-      "rating": Number(ratingRef.current.value),
-      "description": descriptionRef.current.value,
-    };
-    productsFromFile.push(newProduct);
-    setProducts(productsFromFile.slice());
-
-    titleRef.current.value = "";
-    priceRef.current.value = "";
-    imageRef.current.value = "";
-    categoryRef.current.value = "";
-    ratingRef.current.value = "";
-    descriptionRef.current.value = "";
-  }
-
+const searchFromProducts = () => {
+  const result = productsFromFile.filter(product => 
+    product.title.toLowerCase().includes(searchRef.current.value.toLowerCase()) ||
+    product.description.toLowerCase().includes(searchRef.current.value.toLowerCase())
+  );
+  setProducts(result);
+}
 
   return (
     <div>
-      <label>Product image</label><br />
-      <input ref={imageRef} type="text" /><br />
-      <label>Product title</label><br />
-      <input ref={titleRef} type="text" /><br />
-      <label>Product price</label><br />
-      <input ref={priceRef} type="number" /><br />
-      <label>Product category</label><br />
-      <input ref={categoryRef} type="text" /><br />
-      <label>Product rating</label><br />
-      {/* <input ref={ratingRef} type="number" /><br /> */}
-      <input 
-        ref={ratingRef} 
-        type="number" 
-        min="0" 
-        max="5"  
-      /><br />
-      <label>Product description</label><br />
-      <input ref={descriptionRef} type="text" /><br />
-      <button onClick={addProduct}>Add</button><br />
-
+      <input onChange={searchFromProducts} ref={searchRef} type="text" />
+      <span>{products.length}</span>
       <table>
         <thead>
           <tr>
@@ -85,9 +52,9 @@ function MaintainProducts() {
              <td>{product.rating.count}</td>
              <td>{product.description}</td>
              <td>
-              <button onClick={() => deleteProduct(index)}>x</button>
-              <Link to={"/edit-product/" + index}>
-              <button>Edit</button>
+              <button onClick={() => deleteProduct(product)}>x</button>
+              <Link to={"/admin/edit-product/" + product.id}>
+                <button>Edit</button>
               </Link>
               </td>
               
