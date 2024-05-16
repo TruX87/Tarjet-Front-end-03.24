@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 function HomePage() {
-  const [products, setProducts] = useState(productsFromFile);
+  const [products] = useState(productsFromFile);
   
 
 function addToCart(product) {
