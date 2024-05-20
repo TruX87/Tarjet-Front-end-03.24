@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 // import productsFromCart from "../../data/cart.json";
+import "../../css/Cart.css"
+import Button from '@mui/material/Button';
 
 function Cart() {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
@@ -53,36 +55,77 @@ const cartSum = () => {
   return total.toFixed(2);  //fikseeritud 2 komakoha peale
 }
 
+const productsSum = () => {
+  let total = 0;
+  cart.forEach(t => total = total + t.kogus);
+  return total; 
+}
+
+const pay = () => {
+  const url = "https://igw-demo.every-pay.com/api/v4/payments/oneoff";
+  const paymentBody = {
+    "account_name": "EUR3D1",
+    "nonce": "165784" + new Date() + Math.random() * 95959878,
+    "timestamp": new Date(),
+    "amount": cartSum(),
+    "order_reference": Math.random() * 95959878,
+    "customer_url": "https://err.ee",
+    "api_username": "92ddcfab96e34a5f"
+  };
+  const paymentHeaders = {
+    "Authorization": "Basic OTJkZGNmYWI5NmUzNGE1Zjo4Y2QxOWU5OWU5YzJjMjA4ZWU1NjNhYmY3ZDBlNGRhZA==",
+    "Content-Type": "application/json"  
+  };
+
+  fetch(url, {method: "POST", body: JSON.stringify(paymentBody), headers: paymentHeaders})
+      .then(response => response.json())
+      .then(json => window.location.href = json.payment_link)
+}
+// Kui HTMLs vahetame URLi: <Link to="">
+  // Kui Reacti JavaScriptis vahetame URLi const navigate = useNavigate()    navigate("")
+  // Kui tahame URLile liikuda mis on väljaspool meie rakendust     window.location.href = "http://err.ee"
+
+
   return (
     <div>
-      <button onClick={empty}>Empty the cart</button>
+      <br />
+      <Button variant="outlined" onClick={empty}>Empty the cart</Button><br /><br />
       {cart.length > 0 ? (
         cart.map((product, index) =>
-          <div key={index}>
-            <img style={{ width: "100px" }} src={product.toode.image} alt="" /> 
-            <div>{product.toode.title}</div>
-            <div>{product.toode.price.toFixed(2)}</div>
-            <button onClick={() => decreaseQuantity(product)}>-</button>
-            <div>{product.kogus}</div>
-            <button onClick={() => increaseQuantity(product)}>+</button>
-            <div>{(product.toode.price * product.kogus).toFixed(2)}</div>
-            <button onClick={() => removeFromCart(index)}>x</button>
+          <div className='product' key={index}>
+            <img className='image' src={product.toode.image} alt="" /> 
+            <div className='title'>{product.toode.title}</div>
+            <div className='price'>{product.toode.price.toFixed(2)} €</div>
+            {/* <button onClick={() => decreaseQuantity(product)}>-</button> */}
+            <div className='quantity'>
+              <img className='button' onClick={() => decreaseQuantity(product) } src="/minus.png" alt="" />
+              <div>{product.kogus} pcs</div>
+              {/* <button onClick={() => increaseQuantity(product)}>+</button> */}
+              <img className='button' onClick={() => increaseQuantity(product) } src="/plus.png" alt="" />
+            </div>
+            <div className='sum'>{(product.toode.price * product.kogus).toFixed(2)} €</div>
+            {/* <button onClick={() => removeFromCart(index)}>x</button> */}
+            <img className='button' onClick={() => removeFromCart(index) } src="/delete.png" alt="" />
             {/* <button onClick={() => addToEnd(product)}>Add to the end</button> */}
           </div>
         )
       ) : (
         <div>{message}</div>
       )}
-          <span>Number of items in the cart: </span> 
-            {cart.length} 
-            <span> pcs</span>
+
+      {cart.length > 0 &&
+      <span className="cart-bottom">
+          <span>Number of different items in the cart: <b>{cart.length} pcs</b></span>
             <br />
-            <div>Price total: {cartSum()} €</div>
+            <div>Products total: <b>{productsSum()} pcs</b></div>
+            <div>Price total: <b>{cartSum()} €</b></div>
+            <Button variant="contained" onClick={pay}>Maksa</Button>{' '}
             <select>
             {parcelmachines
             .filter(pm => pm.A0_NAME === "EE")
-            .map(pm => <option>{pm.NAME}</option>)}
+            .map(pm => <option key={pm.NAME}>{pm.NAME}</option>)}
             </select>
+      </span>}
     </div>
   );
 }

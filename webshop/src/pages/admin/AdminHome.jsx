@@ -14,6 +14,7 @@ function AdminHome() {
       <Button as={Link} to="/admin/add-product" variant="success">{t('add-product')}</Button>{' '}
       <Button as={Link} to="/admin/maintain-products" variant="warning">{t('maintain-products')}</Button>{' '}
       <Button as={Link} to="/admin/supplier" variant="info">{t('supplier')}</Button>{' '}
+      <Button as={Link} to="/admin/book-supplier" variant="info">{t('book-supplier')}</Button>{' '}
     </div>
   )
 }

@@ -16,6 +16,7 @@ import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import NavigationBar from './components/NavigationBar';
 import Supplier from './pages/admin/Supplier';
+import BookSupplier from './pages/admin/BookSupplier';
 
 
 
@@ -37,6 +38,7 @@ function App() {
         <Route path="/admin/maintain-categories" element={ <MaintainCategories /> } />
         <Route path="/admin/maintain-shops" element={ <MaintainShops /> } />
         <Route path="/admin/supplier" element={ <Supplier /> } />
+        <Route path="/admin/book-supplier" element={ <BookSupplier /> } />
 
         <Route path="/login" element={ <Login /> } />
         <Route path="/signup" element={ <Signup /> } />
