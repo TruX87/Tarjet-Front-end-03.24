@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 // import productsFromCart from "../../data/cart.json";
-import "../../css/Cart.css"
+import styles from "../../css/Cart.module.css"
 import Button from '@mui/material/Button';
 
 function Cart() {
@@ -92,20 +92,20 @@ const pay = () => {
       <Button variant="outlined" onClick={empty}>Empty the cart</Button><br /><br />
       {cart.length > 0 ? (
         cart.map((product, index) =>
-          <div className='product' key={index}>
-            <img className='image' src={product.toode.image} alt="" /> 
-            <div className='title'>{product.toode.title}</div>
-            <div className='price'>{product.toode.price.toFixed(2)} €</div>
+          <div className={styles.product} key={index}>
+            <img className={styles.image} src={product.toode.image} alt="" /> 
+            <div className={styles.title}>{product.toode.title}</div>
+            <div className={styles.price}>{product.toode.price.toFixed(2)} €</div>
             {/* <button onClick={() => decreaseQuantity(product)}>-</button> */}
-            <div className='quantity'>
-              <img className='button' onClick={() => decreaseQuantity(product) } src="/minus.png" alt="" />
+            <div className={styles.quantity}>
+              <img className={styles.button} onClick={() => decreaseQuantity(product) } src="/minus.png" alt="" />
               <div>{product.kogus} pcs</div>
               {/* <button onClick={() => increaseQuantity(product)}>+</button> */}
-              <img className='button' onClick={() => increaseQuantity(product) } src="/plus.png" alt="" />
+              <img className={styles.button} onClick={() => increaseQuantity(product) } src="/plus.png" alt="" />
             </div>
-            <div className='sum'>{(product.toode.price * product.kogus).toFixed(2)} €</div>
+            <div className={styles.sum}>{(product.toode.price * product.kogus).toFixed(2)} €</div>
             {/* <button onClick={() => removeFromCart(index)}>x</button> */}
-            <img className='button' onClick={() => removeFromCart(index) } src="/delete.png" alt="" />
+            <img className={styles.button} onClick={() => removeFromCart(index) } src="/delete.png" alt="" />
             {/* <button onClick={() => addToEnd(product)}>Add to the end</button> */}
           </div>
         )
@@ -114,11 +114,14 @@ const pay = () => {
       )}
 
       {cart.length > 0 &&
-      <span className="cart-bottom">
-          <span>Number of different items in the cart: <b>{cart.length} pcs</b></span>
+        // <span className={styles.cart__bottom}>
+        // <span className={styles.cartBottom}>
+        // <span className={styles['cart-bottom']}>
+      <span className={styles.cartBottom}>
+          <span><u>Number of different items in the cart:</u> <b>{cart.length} pcs</b></span>
             <br />
-            <div>Products total: <b>{productsSum()} pcs</b></div>
-            <div>Price total: <b>{cartSum()} €</b></div>
+            <div><u>Products total:</u> <b>{productsSum()} pcs</b></div>
+            <div><u>Price total:</u> <b>{cartSum()} €</b></div>
             <Button variant="contained" onClick={pay}>Maksa</Button>{' '}
             <select>
             {parcelmachines

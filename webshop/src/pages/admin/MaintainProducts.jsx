@@ -3,7 +3,7 @@ import productsFromFile from "../../data/products.json";
 import { useState } from 'react';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import "../../css/MaintainProducts.css";
+import styles from "../../css/MaintainProducts.module.css";
 
 function MaintainProducts() {
   const [products, setProducts] = useState(productsFromFile.slice());
@@ -43,8 +43,8 @@ const searchFromProducts = () => {
         </thead>
         <tbody>
           {products.map((product, index) => 
-             <tr key={index}> 
-             <td><img style={{width: "100px"}} src={product.image} alt="" /></td>
+             <tr key={index} className={product.active ? styles.active : styles.inactive}> 
+             <td><img className={styles.picture} src={product.image} alt="" /></td>
              <td>{product.title}</td> 
              <td>{product.price}</td> 
              <td>{product.category}</td>

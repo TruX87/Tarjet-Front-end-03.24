@@ -3,8 +3,9 @@ import productsFromFile from "../../data/products.json";
 // import productsFromCart from "../../data/cart.json";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import "../../css/HomePage.css";
+import styles from "../../css/HomePage.module.css";
 import Button from '@mui/material/Button';
+import CarouselGallery from '../../components/CarouselGallery';
 
 
 function HomePage() {
@@ -72,6 +73,7 @@ function addToCart(product) {
 
   return (
     <div>
+      <CarouselGallery />
       <br />
       <Button variant="outlined" onClick={sortAZ}>Sort A-Z</Button>{' '}
       <Button variant="outlined" onClick={sortZA}>Sort Z-A</Button>{' '}
@@ -79,13 +81,13 @@ function addToCart(product) {
       <Button variant="outlined" onClick={sortDESC}>Sort Price desc</Button>{' '}
 
       <Button variant="contained" onClick={filterMens}>men's clothing</Button>{' '}
+      <Button variant="contained" onClick={filterWomen}>women's clothing</Button>{' '}
       <Button variant="contained" onClick={filterJewel}>jewelery</Button>{' '}
       <Button variant="contained" onClick={filterElectronic}>electronics</Button>{' '}
-      <Button variant="contained" onClick={filterWomen}>women's</Button>{' '}
       <br /><br />
-      <div className='products'>
+      <div className={styles.products}>
       {products.map(product =>
-        <div className='home-product' key={product.id}>
+        <div className={styles.product} key={product.id}>
           <img style={{width: "100px"}} src={product.image} alt="" /> 
           <div>{product.title.length > 50 ? product.title.substring(0,50) + "..." : product.title}</div>
           <div>{product.price.toFixed(2)} €</div>

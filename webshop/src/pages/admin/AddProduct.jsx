@@ -1,6 +1,7 @@
-import React from 'react'
-import productsFromFile from "../../data/products.json";
+import React, { useEffect, useState } from 'react'
+// import productsFromFile from "../../data/products.json";
 import { useRef } from 'react';
+
 
 function AddProduct() {
   const titleRef = useRef();
@@ -10,6 +11,14 @@ function AddProduct() {
   const descriptionRef = useRef();
   const ratingRef = useRef();
   const idRef = useRef();
+  const [products, setProducts] = useState([]);
+  const url = process.env.REACT_APP_PRODUCTS_DB_URL;
+
+  useEffect(() => {
+    fetch(url)
+    .then(res => res.json())
+    .then(json => setProducts(json || []));
+  }, [url]);
 
   const addProduct = () => {
     const newProduct = {
@@ -21,7 +30,8 @@ function AddProduct() {
       "rating": Number(ratingRef.current.value),
       "description": descriptionRef.current.value,
     };
-    productsFromFile.push(newProduct);
+    products.push(newProduct);
+    fetch(url, {"method": "PUT", "body": JSON.stringify(products)});
     
 
     idRef.current.value = "";

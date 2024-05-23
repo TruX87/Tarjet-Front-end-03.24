@@ -1,11 +1,10 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import productsFromFile from "../../data/products.json"
+// import productsFromFile from "../../data/products.json"
 import NotFound from '../global/NotFound';
 
 function EditProduct() {
   const {productId} = useParams();  //URLst võetakse ainult sõnu --> "353515"
-  const found = productsFromFile.find(product => product.id === Number(productId));
   
   const titleRef = useRef();
   const priceRef = useRef();
@@ -15,6 +14,15 @@ function EditProduct() {
   const ratingRef = useRef();
   const idRef = useRef();
   const navigate = useNavigate();
+  const [products, setProducts] = useState([]);
+  const url = process.env.REACT_APP_PRODUCTS_DB_URL;
+  const found = products.find(product => product.id === Number(productId));
+
+  useEffect(() => {
+    fetch(url)
+    .then(res => res.json())
+    .then(json => setProducts(json || []));
+  }, [url]);
 
   const editProduct = () => {
     const newProduct = {
@@ -26,10 +34,11 @@ function EditProduct() {
       "rating": Number(ratingRef.current.value),
       "description": descriptionRef.current.value,
     };
-    const index = productsFromFile.indexOf(found);
+    const index = products.indexOf(found);
     // productsFromFile.push(newProduct);
-    productsFromFile[index] = newProduct;
-    navigate("/admin/maintain-products")
+    products[index] = newProduct;
+    fetch(url, {"method": "PUT", "body": JSON.stringify(products)});
+    navigate("/admin/maintain-products");
   }
 
   if (found === undefined) {

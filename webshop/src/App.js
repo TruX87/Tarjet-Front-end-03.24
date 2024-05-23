@@ -17,6 +17,7 @@ import Signup from './pages/auth/Signup';
 import NavigationBar from './components/NavigationBar';
 import Supplier from './pages/admin/Supplier';
 import BookSupplier from './pages/admin/BookSupplier';
+import MaintainPictures from './pages/admin/MaintainPictures';
 
 
 
@@ -36,6 +37,7 @@ function App() {
         <Route path="/admin/edit-product/:productId" element={ <EditProduct /> } />
         <Route path="/admin/maintain-products" element={ <MaintainProducts /> } />
         <Route path="/admin/maintain-categories" element={ <MaintainCategories /> } />
+        <Route path="/admin/maintain-pictures" element={ <MaintainPictures /> } />
         <Route path="/admin/maintain-shops" element={ <MaintainShops /> } />
         <Route path="/admin/supplier" element={ <Supplier /> } />
         <Route path="/admin/book-supplier" element={ <BookSupplier /> } />
