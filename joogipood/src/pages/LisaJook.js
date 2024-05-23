@@ -1,11 +1,19 @@
-import React, { useRef } from 'react'
-import joogidFailist from "../joogid.json";
+import React, { useEffect, useRef, useState } from 'react'
+import config from "../data/config.json";
 
 function LisaJook() {
     const jookRef = useRef();
+    const [joogid, setJoogid] = useState([]);
+
+    useEffect(() => {
+      fetch(config.joogidDbUrl)
+      .then(res => res.json())
+      .then(json => setJoogid(json || []));
+    }, []);
 
     function lisaUusJook() {
-        joogidFailist.push(jookRef.current.value);
+        joogid.push({"nimi": jookRef.current.value});
+        fetch(config.joogidDbUrl, {"method": "PUT", "body": JSON.stringify(joogid)});
     }
 
   return (
