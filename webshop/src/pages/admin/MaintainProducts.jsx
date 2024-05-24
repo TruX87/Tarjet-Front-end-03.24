@@ -1,29 +1,50 @@
 import React from 'react'
-import productsFromFile from "../../data/products.json";
+// import productsFromFile from "../../data/products.json";
 import { useState } from 'react';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styles from "../../css/MaintainProducts.module.css";
+import { useEffect } from 'react';
+import { Spinner } from 'react-bootstrap';
 
 function MaintainProducts() {
-  const [products, setProducts] = useState(productsFromFile.slice());
+  const [products, setProducts] = useState([]);
   const searchRef = useRef();
   
+  const [dbProducts, setDbProducts] = useState([]);
+  const url = process.env.REACT_APP_PRODUCTS_DB_URL;
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(url)
+    .then(res => res.json())
+    .then(json => {
+      setProducts(json)
+      setDbProducts(json);
+      setLoading(false);
+    });
+  }, [url]);
+
 
   const deleteProduct = (product) => {
-    const index = productsFromFile.indexOf(product);
-    productsFromFile.splice(index, 1);
+    const index = dbProducts.indexOf(product);
+    dbProducts.splice(index, 1);
     // setProducts(productsFromFile.slice());
     searchFromProducts();
 
   }
 const searchFromProducts = () => {
-  const result = productsFromFile.filter(product => 
+  const result = dbProducts.filter(product => 
     product.title.toLowerCase().includes(searchRef.current.value.toLowerCase()) ||
     product.description.toLowerCase().includes(searchRef.current.value.toLowerCase())
   );
   setProducts(result);
 }
+
+if (isLoading) {
+  return <Spinner />
+}
+
 
   return (
     <div>

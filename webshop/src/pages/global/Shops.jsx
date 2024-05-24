@@ -12,9 +12,9 @@ function Shops() {
     <Button variant="outlined" onClick={() => setCoordinates({lngLat: [59.4231, 24.7991], zoom: 13})}>Ülemiste</Button>{' '}
     <Button variant="outlined" onClick={() => setCoordinates({lngLat: [59.4277, 24.7193], zoom: 13})}>Kristiine</Button>{' '}<br /><br />
     <Map mapCoordinaates={coordinaates}  /><br />
-    <div className='map2'>
+    {/* <div className='map2'>
       <Map2 />
-    </div>
+    </div> */}
   </div>)
 }
 

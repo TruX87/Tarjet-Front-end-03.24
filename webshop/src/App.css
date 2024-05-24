@@ -20,3 +20,12 @@
 /* .bg-body-tertiary {
   background-color: rgba(206, 253, 238, 0.712)!important;
 } */
+
+.carousel-inner img {
+  /* width: 500px; */
+  height: 200px;
+}
+
+.carousel-indicators {
+  display: none;
+}

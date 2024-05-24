@@ -5,7 +5,7 @@ function HaldaJooke() {
     const [joogid, uuendaJoogid] = useState([]);
 
     useEffect(() => {
-      fetch("URL")
+      fetch(config.joogidDbUrl)
       .then(res => res.json())
       .then(json => uuendaJoogid(json || []));
     }, []);

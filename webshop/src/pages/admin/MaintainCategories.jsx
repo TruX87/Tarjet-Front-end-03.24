@@ -1,19 +1,24 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { Spinner } from 'react-bootstrap';
 
 function MaintainCategories() {
   const [categories, setCategories] = useState([]);
   const categoryRef= useRef();
   const url = process.env.REACT_APP_CATEGORIES_DB_URL;
+  const [isLoading, setLoading] = useState(true);
 
 
   useEffect(() => {
     fetch(url)
     .then(res => res.json())
-    .then(json => setCategories(json || []));
+    .then(json => {
+      setCategories(json || []);
+      setLoading(false);
+    });
   }, [url]);
 
   const add = () => {
-    const newCategory = {"name": categoryRef.current.value};
+    const newCategory = {"name": categoryRef.current.value.toLowerCase()};
     categories.push(newCategory)
     fetch(url, {"method": "PUT", "body": JSON.stringify(categories)});
     setCategories(categories.slice());
@@ -27,6 +32,9 @@ function MaintainCategories() {
     fetch(url, {"method": "PUT", "body": JSON.stringify(categories)});
   }
 
+  if (isLoading) {
+    return <Spinner />
+  }
   return (
     <div>
       <label>Category</label><br />

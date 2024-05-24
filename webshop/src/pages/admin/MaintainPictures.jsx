@@ -22,7 +22,12 @@ function MaintainPictures() {
   }, [url]);
 
   const add = () => {
-    const newPicture = {"url": urlRef.current.value, alt: altRef.current.value, header: headerRef.current.value, text: textRef.current.value};
+    const newPicture = {
+      url: urlRef.current.value, 
+      alt: altRef.current.value, 
+      header: headerRef.current.value, 
+      text: textRef.current.value
+    };
     pictures.push(newPicture)
     fetch(url, {"method": "PUT", "body": JSON.stringify(pictures)});
     setPictures(pictures.slice());

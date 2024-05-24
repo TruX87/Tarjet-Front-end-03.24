@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 // import productsFromFile from "../../data/products.json";
 import { useRef } from 'react';
 
-
+//ID unique lisada
 function AddProduct() {
   const titleRef = useRef();
   const priceRef = useRef();
@@ -11,8 +11,21 @@ function AddProduct() {
   const descriptionRef = useRef();
   const ratingRef = useRef();
   const idRef = useRef();
+
+  
   const [products, setProducts] = useState([]);
   const url = process.env.REACT_APP_PRODUCTS_DB_URL;
+
+  const [categories, setCategories] = useState([]);
+  const categoriesUrl = process.env.REACT_APP_CATEGORIES_DB_URL;
+
+  useEffect(() => {
+    fetch(categoriesUrl)
+    .then(res => res.json())
+    .then(json => {
+      setCategories(json)
+    });
+  }, [categoriesUrl]);
 
   useEffect(() => {
     fetch(url)
@@ -27,7 +40,11 @@ function AddProduct() {
       "price": Number(priceRef.current.value), 
       "category": categoryRef.current.value, 
       "image": imageRef.current.value,
-      "rating": Number(ratingRef.current.value),
+      "rating": {
+        "rate": 0,
+        "count": 0
+      },
+      "active": true,
       "description": descriptionRef.current.value,
     };
     products.push(newProduct);
@@ -39,7 +56,7 @@ function AddProduct() {
     priceRef.current.value = "";
     imageRef.current.value = "";
     categoryRef.current.value = "";
-    ratingRef.current.value = "";
+    // ratingRef.current.value = "";
     descriptionRef.current.value = "";
   }
 
@@ -54,17 +71,19 @@ function AddProduct() {
       <label>Product price</label><br />
       <input ref={priceRef} type="number" /><br />
       <label>Product category</label><br />
-      <input ref={categoryRef} type="text" /><br />
+      {/* <input ref={categoryRef} type="text" /><br />
       <label>Product rating</label><br />
-      {/* <input ref={ratingRef} type="number" /><br /> */}
       <input 
         ref={ratingRef} 
         type="number" 
         min="0" 
         max="5"  
-      /><br />
+      /><br /> */}
+      <select ref={categoryRef}>
+        {categories.map(category => <option key={category.name}>{category.name}</option>)}
+      </select><br />
       <label>Product description</label><br />
-      <input ref={descriptionRef} type="text" /><br />
+      <input ref={descriptionRef} type="text" /><br /><br />
       <button onClick={addProduct}>Add</button><br />
     </div>
   )
