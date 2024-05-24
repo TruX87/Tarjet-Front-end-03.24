@@ -21,10 +21,10 @@ function CarouselGallery() {
         <img
           src={p.url}
           alt={p.alt}
-        />
+        /><br/><br/><br/><br/><br/>
         <Carousel.Caption>
           <h5>{p.header}</h5>
-          <p>{p.text.length > 50 ? p.text.substring(0,50) + "...": p.text}</p>
+          <p>{p.text.length > 60 ? p.text.substring(0,60) + "...": p.text}</p>
         </Carousel.Caption>
       </Carousel.Item>)}
     </Carousel>
