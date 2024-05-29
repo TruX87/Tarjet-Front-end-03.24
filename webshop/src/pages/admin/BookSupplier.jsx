@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Payment from '../../components/Cart/Payment';
 
 function BookSupplier() {
     const [products, setProducts] = useState([]);
@@ -11,6 +12,7 @@ function BookSupplier() {
 
   return (
     <div>
+      <Payment sum={Math.random() * 300} />
         <table>
         <thead>
           <tr>

@@ -7,6 +7,8 @@ import styles from "../../css/MaintainProducts.module.css";
 import { useEffect } from 'react';
 import { Spinner } from 'react-bootstrap';
 
+// let isLoading = true;
+
 function MaintainProducts() {
   const [products, setProducts] = useState([]);
   const searchRef = useRef();
@@ -14,6 +16,7 @@ function MaintainProducts() {
   const [dbProducts, setDbProducts] = useState([]);
   const url = process.env.REACT_APP_PRODUCTS_DB_URL;
   const [isLoading, setLoading] = useState(true);
+  
 
   useEffect(() => {
     fetch(url)
@@ -22,6 +25,7 @@ function MaintainProducts() {
       setProducts(json)
       setDbProducts(json);
       setLoading(false);
+      // isLoading = false;
     });
   }, [url]);
 
@@ -64,6 +68,7 @@ if (isLoading) {
         </thead>
         <tbody>
           {products.map((product, index) => 
+          //komponent koju
              <tr key={index} className={product.active ? styles.active : styles.inactive}> 
              <td><img className={styles.picture} src={product.image} alt="" /></td>
              <td>{product.title}</td> 

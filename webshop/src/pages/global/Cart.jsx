@@ -1,19 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 // import productsFromCart from "../../data/cart.json";
 import styles from "../../css/Cart.module.css"
 import Button from '@mui/material/Button';
+import ParcelMachines from '../../components/Cart/ParcelMachines';
+import Payment from '../../components/Cart/Payment';
 
 function Cart() {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
   const [message, setMessage] = useState("Your cart is empty");
-  const [parcelmachines, setParcelmachines] = useState([]);
-
-  // uef +enter
-  useEffect(() => {
-    fetch('https://www.omniva.ee/locations.json')
-      .then(response => response.json())
-      .then(json => setParcelmachines(json))
-  }, []);
+  
 
   const empty = () => {
     cart.splice(0);
@@ -61,26 +56,26 @@ const productsSum = () => {
   return total; 
 }
 
-const pay = () => {
-  const url = "https://igw-demo.every-pay.com/api/v4/payments/oneoff";
-  const paymentBody = {
-    "account_name": "EUR3D1",
-    "nonce": "165784" + new Date() + Math.random() * 95959878,
-    "timestamp": new Date(),
-    "amount": cartSum(),
-    "order_reference": Math.random() * 95959878,
-    "customer_url": "https://err.ee",
-    "api_username": "92ddcfab96e34a5f"
-  };
-  const paymentHeaders = {
-    "Authorization": "Basic OTJkZGNmYWI5NmUzNGE1Zjo4Y2QxOWU5OWU5YzJjMjA4ZWU1NjNhYmY3ZDBlNGRhZA==",
-    "Content-Type": "application/json"  
-  };
+// const pay = () => {
+//   const url = "https://igw-demo.every-pay.com/api/v4/payments/oneoff";
+//   const paymentBody = {
+//     "account_name": "EUR3D1",
+//     "nonce": "165784" + new Date() + Math.random() * 95959878,
+//     "timestamp": new Date(),
+//     "amount": cartSum(),
+//     "order_reference": Math.random() * 95959878,
+//     "customer_url": "https://err.ee",
+//     "api_username": "92ddcfab96e34a5f"
+//   };
+//   const paymentHeaders = {
+//     "Authorization": "Basic OTJkZGNmYWI5NmUzNGE1Zjo4Y2QxOWU5OWU5YzJjMjA4ZWU1NjNhYmY3ZDBlNGRhZA==",
+//     "Content-Type": "application/json"  
+//   };
 
-  fetch(url, {method: "POST", body: JSON.stringify(paymentBody), headers: paymentHeaders})
-      .then(response => response.json())
-      .then(json => window.location.href = json.payment_link)
-}
+//   fetch(url, {method: "POST", body: JSON.stringify(paymentBody), headers: paymentHeaders})
+//       .then(response => response.json())
+//       .then(json => window.location.href = json.payment_link)
+// }
 // Kui HTMLs vahetame URLi: <Link to="">
   // Kui Reacti JavaScriptis vahetame URLi const navigate = useNavigate()    navigate("")
   // Kui tahame URLile liikuda mis on väljaspool meie rakendust     window.location.href = "http://err.ee"
@@ -122,12 +117,8 @@ const pay = () => {
             <br />
             <div><u>Products total:</u> <b>{productsSum()} pcs</b></div>
             <div><u>Price total:</u> <b>{cartSum()} €</b></div>
-            <Button variant="contained" onClick={pay}>Maksa</Button>{' '}
-            <select>
-            {parcelmachines
-            .filter(pm => pm.A0_NAME === "EE")
-            .map(pm => <option key={pm.NAME}>{pm.NAME}</option>)}
-            </select>
+            <Payment sum={cartSum()} />
+            <ParcelMachines />
       </span>}
     </div>
   );
