@@ -3,13 +3,13 @@ import React from 'react'
 // import productsFromCart from "../../data/cart.json";
 import { useState } from 'react';
 import styles from "../../css/HomePage.module.css";
-import Button from '@mui/material/Button';
 import CarouselGallery from '../../components/CarouselGallery';
 import { useEffect } from 'react';
-import {Spinner} from "react-bootstrap";
+import {Button, Spinner} from "react-bootstrap";
 import SortButtons from "../../components/Home/SortButtons"
 import Products from '../../components/Home/Products';
 import Card from '../../components/Card';
+import FilterButtons from '../../components/Home/FilterButtons';
 
 
 function HomePage() {
@@ -81,11 +81,11 @@ function HomePage() {
   //   const ansver = productsFromFile.filter(t => t.category.startsWith("electronic"));
   //   setProducts(ansver);
   // }
-  function filterByCategory(categoryClicked) {
-    // reset();
-    const result = dbProducts.filter((p) => p.category === categoryClicked);
-    setProducts(result);
-  }
+  // function filterByCategory(categoryClicked) {
+  //   // reset();
+  //   const result = dbProducts.filter((p) => p.category === categoryClicked);
+  //   setProducts(result);
+  // }
 
 
   // 1. võtame localStoragest          localStorage.getItem() || []
@@ -109,19 +109,23 @@ function HomePage() {
       <SortButtons 
       products={products} 
       setProducts={setProducts} />
-<br /><br />
-    {categories.map(category => 
+
+      {/* {categories.map(category => 
       <Button key={category.name} variant="contained" onClick={() => filterByCategory(category.name)}>
         {category.name}
         </Button>
-    )}
-
-    <br /><br />
-    {categoriesFromProducts.map(category => 
-      <Button key={category} variant="contained" onClick={() => filterByCategory(category)}>
-        {category}
-        </Button>
-    )}
+    )} */}
+<br /><br />
+<div className={styles.filter}>
+  {categoriesFromProducts.map(category => 
+        <FilterButtons
+        dbProducts={dbProducts} 
+        setProducts={setProducts}
+        category={category} />
+      )}</div>
+      {/* <FilterButtons
+      dbProducts={dbProducts} 
+      setProducts={setProducts} /> */}
 
       {/* <Button variant="contained" onClick={() => filterByCategory("men's clothing")}>men's clothing</Button>{' '}
       <Button variant="contained" onClick={() => filterByCategory("women's clothing")}>women's clothing</Button>{' '}
@@ -130,9 +134,9 @@ function HomePage() {
       <br /><br />
       <div>Total Products: {products.length}</div><br />
       <div className={styles.products}>
-      {products.map(product =>
-        <Products product={product} />
-      )}
+        {products.map(product =>
+          <Products product={product} />
+        )}
     </div>
     </div>
   )

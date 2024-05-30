@@ -2,10 +2,11 @@ import React from 'react'
 // import productsFromFile from "../../data/products.json";
 import { useState } from 'react';
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
-import styles from "../../css/MaintainProducts.module.css";
+// import { Link } from 'react-router-dom';
+// import styles from "../../css/MaintainProducts.module.css";
 import { useEffect } from 'react';
 import { Spinner } from 'react-bootstrap';
+import AdminMaintainProduct from '../../components/Admin/AdminMaintainProduct';
 
 // let isLoading = true;
 
@@ -30,13 +31,8 @@ function MaintainProducts() {
   }, [url]);
 
 
-  const deleteProduct = (product) => {
-    const index = dbProducts.indexOf(product);
-    dbProducts.splice(index, 1);
-    // setProducts(productsFromFile.slice());
-    searchFromProducts();
+  
 
-  }
 const searchFromProducts = () => {
   const result = dbProducts.filter(product => 
     product.title.toLowerCase().includes(searchRef.current.value.toLowerCase()) ||
@@ -69,22 +65,28 @@ if (isLoading) {
         <tbody>
           {products.map((product, index) => 
           //komponent koju
-             <tr key={index} className={product.active ? styles.active : styles.inactive}> 
-             <td><img className={styles.picture} src={product.image} alt="" /></td>
-             <td>{product.title}</td> 
-             <td>{product.price}</td> 
-             <td>{product.category}</td>
-             <td>{product.rating.rate}</td>
-             <td>{product.rating.count}</td>
-             <td>{product.description}</td>
-             <td>
-              <button onClick={() => deleteProduct(product)}>x</button>
-              <Link to={"/admin/edit-product/" + product.id}>
-                <button>Edit</button>
-              </Link>
-              </td>
+          <AdminMaintainProduct 
+          product={product}
+          dbProducts={dbProducts}
+          searchFromProducts={searchFromProducts}
+          index={index}
+          />
+            //  <tr key={index} className={product.active ? styles.active : styles.inactive}> 
+            //  <td><img className={styles.picture} src={product.image} alt="" /></td>
+            //  <td>{product.title}</td> 
+            //  <td>{product.price}</td> 
+            //  <td>{product.category}</td>
+            //  <td>{product.rating.rate}</td>
+            //  <td>{product.rating.count}</td>
+            //  <td>{product.description}</td>
+            //  <td>
+            //   <button onClick={() => deleteProduct(product)}>x</button>
+            //   <Link to={"/admin/edit-product/" + product.id}>
+            //     <button>Edit</button>
+            //   </Link>
+            //   </td>
               
-            </tr>
+            // </tr>
     )}
         </tbody>
       </table>

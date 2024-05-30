@@ -11,8 +11,7 @@ function AuthForm(props) {
     const [message, setMessage] = useState("");
     const {t} = useTranslation();
     const url = "https://identitytoolkit.googleapis.com/v1/accounts:" + props.url + "?key=" + process.env.REACT_APP_API_KEY;
-    // const url2 = "https://identitytoolkit.googleapis.com/v1/accounts:" + props.url + "?key=" + process.env.REACT_APP_API_KEY;
-
+    
     const submit = () => {
         if (confirmPasswordRef.current !== undefined && 
                 passwordRef.current.value !== confirmPasswordRef.current.value) {
