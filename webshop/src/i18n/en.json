@@ -11,5 +11,9 @@
         "cart": "Cart",
         "login": "Log in",
         "signup": "Sign up"
-        }
- }
+        },
+    
+        "error":{
+            "passwords-do-not-match": "Passwords don't match!"
+        } 
+}

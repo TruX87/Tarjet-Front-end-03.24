@@ -11,5 +11,9 @@
           "cart": "Ostukorv",
           "login": "Logi sisse",
           "signup": "Registreeru"
-        }
+        },
+    
+        "error":{
+            "passwords-do-not-match": "Paroolid ei ühti!"
+        } 
     }
