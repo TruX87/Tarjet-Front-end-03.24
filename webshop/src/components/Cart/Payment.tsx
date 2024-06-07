@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import React from 'react'
 
-function Payment(props) {
+function Payment(props: {sum: string}) {
     const pay = () => {
         const url = "https://igw-demo.every-pay.com/api/v4/payments/oneoff";
         const paymentBody = {

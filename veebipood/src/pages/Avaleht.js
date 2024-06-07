@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 
 function Avaleht() {
   const [kogus, muudaKogus] = useState(0);  // saab kokku liita, lahutada, korrutada, jagada
-  const [sonum, muudaSonum] = useState(""); // sõnadel saab vaadata mis on esimene, teine,
+  const [sonum, muudaSonum] = useState("Muuda kogust"); // sõnadel saab vaadata mis on esimene, teine,
   // kolmas, kas sisaldab, kas on suur või väike
   const [laigitud, muudaLaigitud] = useState(false); // saab tagurpidi keerata -> ! abil
 

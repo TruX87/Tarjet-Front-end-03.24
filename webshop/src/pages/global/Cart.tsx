@@ -1,22 +1,33 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 // import productsFromCart from "../../data/cart.json";
 import styles from "../../css/Cart.module.css"
 import Button from '@mui/material/Button';
 import ParcelMachines from '../../components/Cart/ParcelMachines';
 import Payment from '../../components/Cart/Payment';
+import { CartSumContext } from '../../store/CartSumContext';
+import { useDispatch } from 'react-redux';
+import { decrement as d, increment as i, incrementByAmount} from '../../store/counterSlice';
+import { decrement, increment, decrementByAmount, zero } from '../../store/counterTotalSlice';
 
 function Cart() {
-  const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
+  const [cart, setCart] = useState<any[]>(JSON.parse(localStorage.getItem("cart") || "[]"));
   const [message, setMessage] = useState("Your cart is empty");
+  const {setCartSum} = useContext(CartSumContext);
+  const dispatch = useDispatch();   // kui dispatch toimub, siis reduxi muutuja muutub
   
 
   const empty = () => {
+    dispatch(zero());
+    
     cart.splice(0);
     setCart(cart.slice()); //muudab HTMLi
     localStorage.setItem("cart", JSON.stringify(cart)); //salvestab
+    setCartSum(cartSum()); //muudab navbaris kogusummat
 }
 
-const decreaseQuantity = (product) => {
+const decreaseQuantity = (product: any) => {
+  dispatch(decrement());
+
   product.kogus--;  //vähendab ühe võrra
   if (product.kogus === 0) {
     const index = cart.indexOf(product);
@@ -24,18 +35,26 @@ const decreaseQuantity = (product) => {
   }
   setCart(cart.slice()); //muudab HTMLi
   localStorage.setItem("cart", JSON.stringify(cart)); //salvestab
+  setCartSum(cartSum());
 }
 
-const increaseQuantity = (product) => {
+const increaseQuantity = (product: any) => {
+  dispatch(increment());
+
   product.kogus++;  //suurendab ühe võrra
   setCart(cart.slice()); //muudab HTMLi
   localStorage.setItem("cart", JSON.stringify(cart)); //salvestab
+  setCartSum(cartSum());
 }
 
-const removeFromCart = (jrknr) => {
+const removeFromCart = (jrknr: number) => {
+  dispatch(incrementByAmount(cart[jrknr].kogus));
+  dispatch(decrementByAmount(cart[jrknr].kogus));
+
   cart.splice(jrknr, 1);  
   setCart(cart.slice()); 
   localStorage.setItem("cart", JSON.stringify(cart));
+  setCartSum(cartSum());
 }
 
 // const addToEnd = (product) => {

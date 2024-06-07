@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Routes } from "react-router-dom"
+import { Navigate, Route, Routes } from "react-router-dom"
 import NotFound from './pages/global/NotFound';
 import HomePage from './pages/global/HomePage';
 import SingleProduct from './pages/global/SingleProduct';
@@ -18,11 +18,15 @@ import NavigationBar from './components/NavigationBar';
 import Supplier from './pages/admin/Supplier';
 import BookSupplier from './pages/admin/BookSupplier';
 import MaintainPictures from './pages/admin/MaintainPictures';
+import { useContext } from 'react';
+import { AuthContext } from './store/AuthContext';
 
 
 
 function App() {
-  return (
+  const {loggedIn} = useContext(AuthContext);
+
+    return (
     <div className="App">
       <NavigationBar />
       <Routes>
@@ -32,6 +36,8 @@ function App() {
         <Route path="/cart" element={ <Cart /> } />
         <Route path="/product/:title" element={ <SingleProduct /> } />
 
+        {loggedIn === true && 
+        <>
         <Route path="/admin" element={ <AdminHome /> } />
         <Route path="/admin/add-product" element={ <AddProduct /> } />
         <Route path="/admin/edit-product/:productId" element={ <EditProduct /> } />
@@ -41,9 +47,16 @@ function App() {
         <Route path="/admin/maintain-shops" element={ <MaintainShops /> } />
         <Route path="/admin/supplier" element={ <Supplier /> } />
         <Route path="/admin/book-supplier" element={ <BookSupplier /> } />
+        </>}
 
+        {loggedIn === false &&
+          // <Route path="/admin/*" element={ <Login /> } />
+          <Route path="/admin/*" element={ <Navigate to={"/login"} /> } />
+        }
+        {/* loggedIn === false, siis näita neid */}
         <Route path="/login" element={ <Login /> } />
         <Route path="/signup" element={ <Signup /> } />
+        {/* loggedIn === true, siis manuaalselt /login või /signup lehele minnes, suuna /admin */}
 
         <Route path="*" element={ <NotFound /> } />
       </Routes>

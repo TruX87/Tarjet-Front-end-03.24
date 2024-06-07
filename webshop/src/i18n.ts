@@ -28,11 +28,11 @@ const resources = {
       localStorage.setItem("lang", "en");
       return "en";
   }
-  if (["en", "et", "gr", "fi"].includes(localStorage.getItem("lang")) === false) {
+  if (["en", "et", "gr", "fi"].includes(localStorage.getItem("lang") || "") === false) {
     localStorage.setItem("lang", "en");
     return "en";
   }
-  return localStorage.getItem("lang");
+  return localStorage.getItem("lang") || "";
 }
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next

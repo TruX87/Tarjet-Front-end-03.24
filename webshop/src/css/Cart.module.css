@@ -17,7 +17,7 @@
 }
 
 .price {
-    width: 75px;
+    width: 100px;
     align-self: center;
     font-weight: 600;
     font-size: 20px;
@@ -60,7 +60,7 @@
 }
 
 .sum {
-    width: 75px;
+    width: 100px;
     align-self: center;
     font-weight: 600;
     font-size: 20px;

@@ -118,7 +118,7 @@ function HomePage() {
 <br /><br />
 <div className={styles.filter}>
   {categoriesFromProducts.map(category => 
-        <FilterButtons
+        <FilterButtons key={category}
         dbProducts={dbProducts} 
         setProducts={setProducts}
         category={category} />
@@ -135,7 +135,7 @@ function HomePage() {
       <div>Total Products: {products.length}</div><br />
       <div className={styles.products}>
         {products.map(product =>
-          <Products product={product} />
+          <Products key={product.id} product={product} />
         )}
     </div>
     </div>

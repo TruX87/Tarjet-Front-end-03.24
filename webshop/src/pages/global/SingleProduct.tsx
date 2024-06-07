@@ -8,13 +8,16 @@ function SingleProduct() {
     const {title} = useParams();
   //   const products = products.find(t => t.title.replaceAll(" ", "-").replaceAll(",", "").toLowerCase() === title
   // );
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<any[]>([]);
   const url = process.env.REACT_APP_PRODUCTS_DB_URL;
   const [isLoading, setLoading] = useState(true);
   const found = products.find(t => t.title.replaceAll(" ", "-").replaceAll(",", "").toLowerCase() === title
   );
     
   useEffect(() => {
+    if (url === undefined) {
+      return;
+    }
     fetch(url)
     .then(res => res.json())
     .then(json => {

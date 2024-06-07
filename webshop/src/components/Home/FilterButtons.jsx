@@ -10,7 +10,7 @@ function FilterButtons({dbProducts, setProducts, category, categories}) {
   }
   return (
     <div>
-    <Button key={category} variant="contained" onClick={() => filterByCategory(category)}>
+    <Button variant="contained" onClick={() => filterByCategory(category)}>
         {category}
         </Button>
     </div>

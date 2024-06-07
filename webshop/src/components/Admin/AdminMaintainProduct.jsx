@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom';
 import styles from "../../css/MaintainProducts.module.css";
 
 function AdminMaintainProduct({product, dbProducts, searchFromProducts, index}) {
+  const url = process.env.REACT_APP_PRODUCTS_DB_URL;
+  
     const deleteProduct = (product) => {
         const index = dbProducts.indexOf(product);
         dbProducts.splice(index, 1);
         // setProducts(productsFromFile.slice());
+        fetch(url, {"method": "PUT", "body": JSON.stringify(dbProducts)});
         searchFromProducts();
     
       }
