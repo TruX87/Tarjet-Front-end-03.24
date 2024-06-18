@@ -5,8 +5,17 @@ import GarantiiTeostamine from '../components/GarantiiTeostamine'
 import GarantiiEiKuulu from '../components/GarantiiEiKuulu'
 import Tarbija from '../components/Tarbija'
 import Defekt from '../components/Defekt'
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+
 
 function Arikliendile() {
+  gsap.registerPlugin(useGSAP,ScrollToPlugin);
+
+ 
+  
   return (
     <div>
        <h1>Garantii tingimused</h1> 
@@ -15,6 +24,7 @@ function Arikliendile() {
 <br />
 Salvesta .pdf kujul siit
 <br />
+<button onClick={() => gsap.scrollTo("#4") }>4.peatükk</button>
 <Yldist />
 <br />
 <br />
@@ -24,7 +34,7 @@ Salvesta .pdf kujul siit
 <GarantiiTeostamine />
 <br />
 <br />
-<GarantiiEiKuulu />
+<GarantiiEiKuulu id="4"/>
 <br />
 <br />
 <Tarbija />

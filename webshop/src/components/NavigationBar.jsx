@@ -67,9 +67,13 @@ function NavigationBar() {
             </NavDropdown> */}
           </Nav>
           <Nav>
-            <span>
-              Cart count: {cartTotal} tk / 
+            {/* <span>
+              Cart count: {cartTotal} pc / 
               Sum: {cartSum} €
+              </span> */}
+              <span>
+                Cart count: {cartTotal > 0 && `${cartTotal} ${cartTotal === 1 ? 'pc' : 'pcs'}`} /
+                Sum: {cartSum > 0 && ` ${cartSum} €`}
               </span>
             {loggedIn === false && <Nav.Link as={Link} to="/login">{t('nav.login')}</Nav.Link>}
             {loggedIn === false && <Nav.Link as={Link} to="/signup">{t('nav.signup')}</Nav.Link>}

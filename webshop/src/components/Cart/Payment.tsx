@@ -1,7 +1,12 @@
 import { Button } from '@mui/material';
 import React from 'react'
 
-function Payment(props: {sum: string}) {
+
+type PaymentInterface = {
+  sum: string
+}
+
+function Payment(props: PaymentInterface) {
     const pay = () => {
         const url = "https://igw-demo.every-pay.com/api/v4/payments/oneoff";
         const paymentBody = {
@@ -10,7 +15,7 @@ function Payment(props: {sum: string}) {
           "timestamp": new Date(),
           "amount": props.sum,
           "order_reference": Math.random() * 95959878,
-          "customer_url": "https://err.ee",
+          "customer_url": "https://test-webshop.web.app/payment/",
           "api_username": "92ddcfab96e34a5f"
         };
         const paymentHeaders = {

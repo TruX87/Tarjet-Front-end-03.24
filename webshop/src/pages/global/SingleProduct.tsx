@@ -3,12 +3,13 @@ import { useParams } from 'react-router-dom'
 // import productsFromFile from "../../data/products.json";
 import NotFound from './NotFound';
 import { Spinner } from 'react-bootstrap';
+import { Product } from '../../models/Product';
 
 function SingleProduct() {
     const {title} = useParams();
   //   const products = products.find(t => t.title.replaceAll(" ", "-").replaceAll(",", "").toLowerCase() === title
   // );
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const url = process.env.REACT_APP_PRODUCTS_DB_URL;
   const [isLoading, setLoading] = useState(true);
   const found = products.find(t => t.title.replaceAll(" ", "-").replaceAll(",", "").toLowerCase() === title

@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { Catecory } from '../../models/Category';
+import { Product } from '../../models/Product';
 
 function AddProduct() {
   const titleRef = useRef<HTMLInputElement>(null);
@@ -8,11 +10,11 @@ function AddProduct() {
   const descriptionRef = useRef<HTMLInputElement>(null);
   const idRef = useRef<HTMLInputElement>(null);
 
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [idUnique, setIdUnique] = useState(true);
   const url = process.env.REACT_APP_PRODUCTS_DB_URL;
 
-  const [categories, setCategories] = useState<{"name": string}[]>([]);
+  const [categories, setCategories] = useState<Catecory[]>([]);
   const categoriesUrl = process.env.REACT_APP_CATEGORIES_DB_URL;
 
   useEffect(() => {

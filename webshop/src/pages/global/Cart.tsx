@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 // import productsFromCart from "../../data/cart.json";
 import styles from "../../css/Cart.module.css"
 import Button from '@mui/material/Button';
@@ -8,12 +8,40 @@ import { CartSumContext } from '../../store/CartSumContext';
 import { useDispatch } from 'react-redux';
 import { decrement as d, increment as i, incrementByAmount} from '../../store/counterSlice';
 import { decrement, increment, decrementByAmount, zero } from '../../store/counterTotalSlice';
+import { CartProduct } from '../../models/CartProduct';
+import { Product } from '../../models/Product';
+// import { Product } from '../../models/Product';
 
 function Cart() {
-  const [cart, setCart] = useState<any[]>(JSON.parse(localStorage.getItem("cart") || "[]"));
+  const cartLS: CartProduct[] = useMemo(() => JSON.parse(localStorage.getItem("cart") || "[]"), []);
+  const [cart, setCart] = useState<CartProduct[]>([]);
   const [message, setMessage] = useState("Your cart is empty");
   const {setCartSum} = useContext(CartSumContext);
-  const dispatch = useDispatch();   // kui dispatch toimub, siis reduxi muutuja muutub
+  const dispatch = useDispatch();
+  const url = process.env.REACT_APP_PRODUCTS_DB_URL;
+  // const [products, setProducts] = useState<Product[]>([]); 
+  
+  const findCartProductsWithDbProducts = useCallback((json: Product[]) => {
+    const cartWithOriginalProducts: CartProduct[] = cartLS.map((cartProduct) => 
+     ({
+         kogus: cartProduct.kogus, 
+         toode: json.find(p => p.id === cartProduct.toode.id)
+       })
+     ).filter((cp): cp is CartProduct => cp.toode !== undefined);
+   setCart(cartWithOriginalProducts);
+ }, [cartLS])
+
+  useEffect(() => {
+    if (url === undefined) {
+      return;
+    }
+    fetch(url)
+      .then(res => res.json())
+      .then((json: Product[]) => {
+        findCartProductsWithDbProducts(json);
+      });
+  }, [url, findCartProductsWithDbProducts]);
+
   
 
   const empty = () => {
@@ -25,11 +53,11 @@ function Cart() {
     setCartSum(cartSum()); //muudab navbaris kogusummat
 }
 
-const decreaseQuantity = (product: any) => {
+const decreaseQuantity = (product: CartProduct) => {
   dispatch(decrement());
 
   product.kogus--;  //vähendab ühe võrra
-  if (product.kogus === 0) {
+  if (product.kogus <= 0) {
     const index = cart.indexOf(product);
     cart.splice(index, 1);
   }
@@ -38,7 +66,7 @@ const decreaseQuantity = (product: any) => {
   setCartSum(cartSum());
 }
 
-const increaseQuantity = (product: any) => {
+const increaseQuantity = (product: CartProduct) => {
   dispatch(increment());
 
   product.kogus++;  //suurendab ühe võrra

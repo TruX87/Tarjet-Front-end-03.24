@@ -28,8 +28,7 @@ function HomePage() {
       setProducts(json)
       setDbProducts(json);
       setLoading(false);
-      const result = [...new Set(json.map(product => product.category))];
-      setCategoriesFromProducts(result);
+      findCategoriesByProduct(json)
     });
   }, [url]);
 
@@ -41,6 +40,12 @@ function HomePage() {
     });
   }, [categoriesUrl]);
 
+  
+
+  const findCategoriesByProduct = (json) => {
+    const result = [...new Set(json.map(product => product.category))];
+    setCategoriesFromProducts(result);
+  }
 
   // const sortAZ = () => {
   //   products.sort((a,b) => a.title.localeCompare(b.title));

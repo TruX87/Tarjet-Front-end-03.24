@@ -20,6 +20,7 @@ import BookSupplier from './pages/admin/BookSupplier';
 import MaintainPictures from './pages/admin/MaintainPictures';
 import { useContext } from 'react';
 import { AuthContext } from './store/AuthContext';
+import CheckPayment from './pages/global/CheckPayment';
 
 
 
@@ -59,6 +60,7 @@ function App() {
         {/* loggedIn === true, siis manuaalselt /login või /signup lehele minnes, suuna /admin */}
 
         <Route path="*" element={ <NotFound /> } />
+        <Route path="/payment" element={ <CheckPayment /> } />
       </Routes>
     </div>
   );
